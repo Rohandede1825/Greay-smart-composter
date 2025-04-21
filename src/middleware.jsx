@@ -10,7 +10,7 @@ export function middleware(request) {
 
 
 console.log(path)
- console.log(config.matcher.some( (element) => element === path ))
+ //console.log(config.matcher.some( (element) => element === path ))
 // console.log(ispublicPath+'--'+config.matcher[0]+'--'+token )
 
 
@@ -32,7 +32,7 @@ if (!ispublicPath && !token  )
  
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: [ '/login', '/new', '/register', '/profile', '/([a-zA-Z0-9-_]+)']
+  matcher: [ '/login', '/new', '/register', '/profile', '/([a-zA-Z0-9-_]+)', '/']
 }
 
 
