@@ -1,0 +1,56 @@
+import mongoose from "mongoose"
+
+const logModel = new mongoose.Schema({
+   name:{
+    type: String,
+    require: true,
+   },
+    userID: {
+        type: String,
+        require: true,
+        unique: true
+    },
+    country: {
+        type: String,
+        require: true
+    },
+    password: {
+        type: String,
+        require: true
+    },
+
+    HashPassword: {
+        type: String,
+        require: true,
+    },
+});
+export const Log = mongoose.models.userdatas || mongoose.model('userdatas', logModel);
+
+
+
+
+
+
+const sensorlogModel = new mongoose.Schema({
+    sensor: {
+        type: String,
+    },
+    sw: {
+        type: String,
+
+    },
+    btn: {
+        type: String,
+
+    },
+    msg: {
+        type: String,
+
+    }
+
+
+});
+export const Sensor = mongoose.models.sensorCollections || mongoose.model('sensorCollections', sensorlogModel);
+
+
+

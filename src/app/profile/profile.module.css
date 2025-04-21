@@ -1,0 +1,123 @@
+
+.bg {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin: -0;
+  box-sizing: border-box;
+
+}
+
+.LeftsideBar {
+
+  background-color: #f0c9b2;
+  box-sizing: border-box;
+  flex: 13%;
+ min-width: 170px;
+}
+
+
+.Rightpanenl {
+  position: relative;
+  background-color: #d1ebc6;
+  flex:87%;
+  
+ 
+}
+
+
+
+.UserInfo {
+  height: 50px;
+  background-color: #ffffff;
+border: 1px solid #000000;
+  
+}
+
+.Content {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+}
+
+
+
+.sensor1 {
+
+  flex-grow: 0;
+  background-color: #c9149c;
+
+
+
+}
+
+.sensor2 {
+ 
+  background-color: #be5555;
+
+
+}
+
+.sensor3 {
+
+  background-color: #961350;
+
+
+}
+
+.sensor4 {
+
+  background-color: #26d45a;
+
+
+}
+
+.sensor5 {
+
+  background-color: #d6d32c;
+
+
+}
+
+.sensor6 {
+  
+  background-color: #71dd71;
+
+
+}
+
+.sensor7 {
+
+
+  background-color: #e93d9c;
+ 
+
+}
+
+.sensor1,.sensor2,.sensor3,.sensor4,.sensor5,.sensor6,.sensor7 {
+ margin: 5px;
+flex-grow: 1;
+min-width: 150px;
+max-width: 170px;
+height: 100px;
+border-radius: 10px;
+box-sizing: border-box;
+}
+
+.sensor1:hover,.sensor2:hover,.sensor3:hover,.sensor4:hover,.sensor5:hover,.sensor6:hover,.sensor7:hover {
+
+
+box-sizing: border-box;
+border: 1px solid #000000;
+ }
+
+ .img {
+
+
+  box-sizing: border-box;
+
+   }
+  
