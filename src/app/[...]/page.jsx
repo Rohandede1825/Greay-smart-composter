@@ -8,7 +8,7 @@ page.propTypes = {
 function page(props) {
     return (
         <div>
-            hhh
+            Page is not available
         </div>
     );
 }
