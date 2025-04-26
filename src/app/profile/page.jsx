@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import profile from './profile.module.css'
 
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
+
 import Image from "next/image";
 import facebook from '../../../public/Image/facebook.png';
 import google from '../../../public/Image/google.png';
@@ -21,6 +24,20 @@ function page() {
   const handleShow = () => {
     setShow(!show)
   }
+
+  useEffect(() => {
+    //Implementing the setInterval method..
+    const interval = setInterval(() => {
+      getdata();
+      setMyinterval(!myinterval)
+      // console.log('Interval is running...')
+    }, 5000);
+    //Clearing the interval0
+    return () => clearInterval(interval);
+  }, [myinterval]);
+
+
+
 
  const getdata = (() => {
     //api/users/sensorslog
@@ -56,19 +73,37 @@ function page() {
   }
 
 
+  const generateExcel = () => {
+    // Example JSON data
+    var exceldata = [
+      { Sr: '', S1: data.sensor[0], S2: data.sensor[1] ,S3: data.sensor[3],  S4: data.sensor[4], S5: data.sensor[5], S6: data.sensor[6],S7:  data.sensor[6]  }
+     
+    ];
+ //exceldata = data.sensor
+    // Convert JSON to sheet
+    const worksheet = XLSX.utils.json_to_sheet(exceldata);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+    // Create Excel buffer
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+
+    // Create a Blob and download
+    const blob = new Blob([excelBuffer], {
+      type:
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    saveAs(blob, 'example.xlsx');
+  };
 
 
 
-  useEffect(() => {
-    //Implementing the setInterval method..
-    const interval = setInterval(() => {
-      getdata();
-      setMyinterval(!myinterval)
-      // console.log('Interval is running...')
-    }, 5000);
-    //Clearing the interval0
-    return () => clearInterval(interval);
-  }, [myinterval]);
+
+
+  
 
 
   return (
@@ -94,7 +129,10 @@ function page() {
 
         </div>
 
-
+        <main style={{ padding: '2rem' }}>
+      <h1>Download Excel File</h1>
+      <button onClick={generateExcel}>Generate Excel</button>
+    </main>
       </div>
 
    
