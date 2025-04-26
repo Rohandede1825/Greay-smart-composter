@@ -81,22 +81,45 @@ function page() {
     ];
  //exceldata = data.sensor
     // Convert JSON to sheet
+  
+
     const worksheet = XLSX.utils.json_to_sheet(exceldata);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
 
-    // Create Excel buffer
-    const excelBuffer = XLSX.write(workbook, {
-      bookType: 'xlsx',
-      type: 'array',
-    });
+  // Create Excel buffer
+  const excelBuffer = XLSX.write(workbook, {
+    bookType: 'xlsx',
+    type: 'array',
+  });
 
-    // Create a Blob and download
-    const blob = new Blob([excelBuffer], {
-      type:
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    });
-    saveAs(blob, 'example.xlsx');
+// Create a Blob and download
+const blob = new Blob([excelBuffer], {
+  type:
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+});
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+   
+    
+    saveAs(blob, 'SensorsData.xlsx');
+
+
+
+
   };
 
 
