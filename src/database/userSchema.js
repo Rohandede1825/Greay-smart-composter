@@ -33,22 +33,15 @@ export const Log = mongoose.models.userdatas || mongoose.model('userdatas', logM
 
 const sensorlogModel = new mongoose.Schema({
     sensor: {
-        type: String,
+        type:Array,
     },
-    sw: {
-        type: String,
-
-    },
-    btn: {
-        type: String,
-
-    },
-    msg: {
-        type: String,
-
-    }
-
-
+time:{
+    type:String,
+},
+other
+:{
+    type:String,
+},
 });
 export const Sensor = mongoose.models.sensorCollections || mongoose.model('sensorCollections', sensorlogModel);
 

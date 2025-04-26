@@ -111,13 +111,30 @@ box-sizing: border-box;
 
 
 box-sizing: border-box;
-border: 1px solid #000000;
+background-color: #f1cde1;
  }
 
  .img {
-
-
   box-sizing: border-box;
-
    }
   
+   .logoff
+   {position: relative;
+    height: 30px;
+    width: 70px;
+    border-radius:40px;
+    float: right;
+    top: 50%;
+  
+text-align: center;
+ transform: translate(-10px, -50%);
+ border: 1px solid #000000;
+    background-color: #d1cdcd;
+    color: #000000;
+  
+
+  
+    padding: 0px;
+     cursor: pointer;
+    box-sizing: border-box;
+   }
