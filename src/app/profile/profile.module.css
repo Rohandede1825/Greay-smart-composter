@@ -15,6 +15,8 @@
   box-sizing: border-box;
   flex: 13%;
  min-width: 170px;
+
+  
 }
 
 
@@ -29,10 +31,11 @@
 
 
 .UserInfo {
-  height: 50px;
+  height: 130px;
   background-color: #ffffff;
 border: 1px solid #000000;
-  
+  padding: 0px;
+
 }
 
 .Content {
@@ -127,7 +130,9 @@ background-color: #f1cde1;
     top: 50%;
   
 text-align: center;
- transform: translate(-10px, -50%);
+ transform: translate(-10px, 0%);
+ top: 10px;
+  
  border: 1px solid #000000;
     background-color: #d1cdcd;
     color: #000000;

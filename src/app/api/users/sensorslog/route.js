@@ -4,14 +4,21 @@ import { NextResponse } from "next/server";
 const connectionStr = "mongodb+srv://lalilswani:KrGXqcaDbahGMmaL@cluster0.ygf21f6.mongodb.net/projectOne?retryWrites=true&w=majority&appName=Cluster0";
 
 
-export const GET = async () => {
+export const GET = async (reqest) => {
+   //let payload = 
+   const  query  = await reqest.nextUrl.searchParams.get("purp");
+    console.log(query)
     await mongoose.connect(connectionStr)
-   // const data = await Sensor.find();
-//db.collection.find().skip(db.collection.count() - N)
-const data = await Sensor.find().skip(0).limit(1).sort({ _id: -1 });
+
+    if (query ===null) {
+var data = await Sensor.find().skip(0).limit(1).sort({ _id: -1 });
     return NextResponse.json({ result: data })
 }
-
+else if (query === "all") {
+     var data = await Sensor.find();
+     return NextResponse.json({ result: data })
+}
+}
 
 export const POST = async (reqest) => {
     let payload = await reqest.json();

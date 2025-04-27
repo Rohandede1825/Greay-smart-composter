@@ -136,8 +136,11 @@ const blob = new Blob([excelBuffer], {
         <div className={profile.LeftsideBar}>
         </div>
         <div className={profile.Rightpanenl}>
-          <div className={profile.UserInfo}>UserInfo 
+          <div className={profile.UserInfo} >
           <button className={profile.logoff} onClick={(e) => (onLogoff(e))}>&nbsp; Log Off &nbsp;</button>
+<h1 style={{ "color":"blue" ,'textAlign':'center' }}>Greya Smart Composter</h1>
+<h4  style={{ 'textAlign':'center'   }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
+         
            </div>
           <div className={profile.Content}>
             <div className={profile.sensor1}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />  </div>{data.sensor[0]}</div>
