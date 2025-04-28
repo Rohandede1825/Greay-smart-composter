@@ -192,19 +192,19 @@ useEffect(() => {
         </div>
         <div className={profile.Rightpanenl}>
           <div className={profile.UserInfo} >
-          <button className={profile.logoff} onClick={(e) => (onLogoff(e))}>&nbsp; Log Off &nbsp;</button>
+          <button className={profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading}>{loading ? 'Logging Off' : ' Log Off ' }</button>
 <h1 style={{ "color":"blue" ,'textAlign':'center' }}>Greya Smart Composter</h1>
 <h4  style={{ 'textAlign':'center'   }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
          
            </div>
           <div className={profile.Content}>
-            <div className={profile.sensor1}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />  </div> {data.Humidity}</div>
-            <div className={profile.sensor2}> <div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /></div>{data.Temperature}</div>
-            <div className={profile.sensor3}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.Ph}</div>
-            <div className={profile.sensor4}> <div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.H2s}</div>
-            <div className={profile.sensor5}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />{data.Ammonia} </div></div>
-            <div className={profile.sensor6}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.Methane}</div>
-            <div className={profile.sensor7}> <div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.Co2}</div>
+            <div className={profile.sensor1}> <div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />  <br></br> {data.Humidity}</div></div>
+            <div className={profile.sensor2}> <div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /><br></br>{data.Temperature}</div></div>
+            <div className={profile.sensor3}><div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> <br></br>{data.Ph}</div> </div>
+            <div className={profile.sensor4}> <div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /><br></br> {data.H2s}</div> </div>
+            <div className={profile.sensor5}><div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /><br></br>{data.Ammonia} </div></div>
+            <div className={profile.sensor6}><div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> <br></br>{data.Methane}</div></div>
+            <div className={profile.sensor7}> <div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> <br></br>{data.Co2}</div> </div>
 
           </div>
 

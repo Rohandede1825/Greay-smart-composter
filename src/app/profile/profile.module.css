@@ -31,7 +31,7 @@
 
 
 .UserInfo {
-  height: 130px;
+ 
   background-color: #ffffff;
 border: 1px solid #000000;
   padding: 0px;
@@ -39,6 +39,7 @@ border: 1px solid #000000;
 }
 
 .Content {
+ margin-top: 5px;
   background-color: #ffffff;
   border: 1px solid #000000;
   display: flex;
@@ -46,68 +47,52 @@ border: 1px solid #000000;
   align-content: space-evenly;
 }
 
+.sensor
+{max-width: 150px;
 
+text-align: center;
+margin: 0px;
+overflow:hidden;
+padding: 0px;
+}
 
 .sensor1 {
-
-  flex-grow: 0;
-  background-color: #c9149c;
-
-
-
+  background-color: #e7bddd;
 }
 
 .sensor2 {
- 
-  background-color: #be5555;
-
-
+  background-color: #ccbcbc;
 }
 
 .sensor3 {
-
-  background-color: #961350;
-
-
+  background-color: #a8969f;
 }
 
 .sensor4 {
-
-  background-color: #26d45a;
-
-
+  background-color: #88b997;
 }
 
 .sensor5 {
-
-  background-color: #d6d32c;
-
-
+  background-color: #bebe84;
 }
 
 .sensor6 {
-  
-  background-color: #71dd71;
-
-
+  background-color: #a0c9a0;
 }
 
 .sensor7 {
-
-
-  background-color: #e93d9c;
- 
-
+  background-color: #c0acb7;
 }
 
 .sensor1,.sensor2,.sensor3,.sensor4,.sensor5,.sensor6,.sensor7 {
  margin: 5px;
-flex-grow: 1;
+flex-grow: 2;
 min-width: 150px;
-max-width: 170px;
+max-width: 150px;
 height: 100px;
 border-radius: 10px;
 box-sizing: border-box;
+padding: 0px;
 }
 
 .sensor1:hover,.sensor2:hover,.sensor3:hover,.sensor4:hover,.sensor5:hover,.sensor6:hover,.sensor7:hover {
