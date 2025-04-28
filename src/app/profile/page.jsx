@@ -212,14 +212,12 @@ useEffect(() => {
 
         <main style={{ padding: '2rem' }}>
       <h1>Download Excel File</h1>
-      <button onClick={fetchDataAndCreateExcel} disabled={loading}>
-        {loading ? 'Generating...' : 'Generate Excel'}
-      </button>
+      <button onClick={fetchDataAndCreateExcel}> Generate Excel </button>
     </main>
      
 
-
-  
+     
+   
      
      
       </div>
