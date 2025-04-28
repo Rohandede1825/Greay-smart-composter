@@ -32,31 +32,23 @@ function page() {
   }
 
 
-
-
- 
-
-
-
-  
-
-
-
   const getdata = async () => {
     try {
       const response = await fetch(window.location.origin+'/api/users/sensorslog');
       const result = await response.json();
       setData(result[0])
     } 
-    
+   
     catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
 useEffect(() => {
-    getdata();
-    
+
+  getdata();
+  console.log(data)
+
   },[]
 );
 
@@ -101,54 +93,6 @@ useEffect(() => {
 
 
 
-
-
-
-
-  const generateExcel = async() => {
-  
-    try {
-      const response = await fetch(window.location.origin+'/api/users/sensorslog?purp=all');
-      const result = await response.json();
-      await setExcelData(result[0])
-    } 
-   catch (error) {
-     // setExcelData('')
-    console.error("Error fetching data:", error);
-    }
-
-
- 
-   
-    //setExcelData
-    
-    const data = [
-      { Name: 'John', Age: 28, Country: 'USA' },
-      { Name: 'Anna', Age: 22, Country: 'UK' },
-    ];
-
-
-
-    
-    // Convert JSON to sheet
-     const  worksheet =  XLSX.utils.json_to_sheet(excelData);
-    const workbook =  XLSX.utils.book_new();
-     XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-
-    // Create Excel buffer
-    const excelBuffer = await XLSX.write(workbook, {
-      bookType: 'xlsx',
-      type: 'array',
-    });
-
-    // Create a Blob and download
-    const blob = await new Blob([excelBuffer], {
-      type:
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    });
-     saveAs(blob, 'example.xlsx');
-  };
-
 ////////////////////////////////////////////////////////////////////////////////////////////
   const fetchDataAndCreateExcel = async () => {
     setLoading(true);
@@ -156,10 +100,10 @@ useEffect(() => {
     try {
       // Example API call
       const res = await fetch(window.location.origin+'/api/users/sensorslog?purp=all');
-      const data = await res.json();
+      const exceldata = await res.json();
 
       // Convert data to worksheet
-      const worksheet = XLSX.utils.json_to_sheet(data);
+      const worksheet = XLSX.utils.json_to_sheet(exceldata);
 
       // Create a new workbook and append the worksheet
       const workbook = XLSX.utils.book_new();
