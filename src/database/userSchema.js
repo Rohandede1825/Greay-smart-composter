@@ -1,10 +1,10 @@
 import mongoose from "mongoose"
 
 const logModel = new mongoose.Schema({
-   name:{
-    type: String,
-    require: true,
-   },
+    name: {
+        type: String,
+        require: true,
+    },
     userID: {
         type: String,
         require: true,
@@ -32,16 +32,37 @@ export const Log = mongoose.models.userdatas || mongoose.model('userdatas', logM
 
 
 const sensorlogModel = new mongoose.Schema({
-    sensor: {
-        type:Array,
+
+    Humidity: {
+        type: String,
     },
-time:{
-    type:String,
-},
-other
-:{
-    type:String,
-},
+    Temperature: {
+        type: String,
+    },
+    Ph: {
+        type: String,
+    },
+
+    H2s: {
+        type: String,
+    },
+    Ammonia: {
+        type: String,
+    },
+    Methane: {
+        type: String,
+    },
+    Co2: {
+        type: String,
+    },
+
+    time: {
+        type: String,
+    },
+    other
+        : {
+        type: String,
+    },
 });
 export const Sensor = mongoose.models.sensorCollections || mongoose.model('sensorCollections', sensorlogModel);
 

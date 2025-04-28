@@ -5,18 +5,16 @@ const connectionStr = "mongodb+srv://lalilswani:KrGXqcaDbahGMmaL@cluster0.ygf21f
 
 
 export const GET = async (reqest) => {
-   //let payload = 
    const  query  = await reqest.nextUrl.searchParams.get("purp");
-    console.log(query)
     await mongoose.connect(connectionStr)
-
+   
     if (query ===null) {
 var data = await Sensor.find().skip(0).limit(1).sort({ _id: -1 });
-    return NextResponse.json({ result: data })
+    return NextResponse.json(data )
 }
 else if (query === "all") {
      var data = await Sensor.find();
-     return NextResponse.json({ result: data })
+     return NextResponse.json( data )
 }
 }
 
@@ -35,3 +33,14 @@ export const POST = async (reqest) => {
     return NextResponse.json(({ sucess: true }), { status: 202 })
 }
 
+
+
+export const DELETE = async (reqest) => {
+ 
+    
+  await mongoose.connect(connectionStr)
+  await Sensor.deleteMany()
+return NextResponse.json(({ sucess: true }), { status: 202 })
+}
+
+  

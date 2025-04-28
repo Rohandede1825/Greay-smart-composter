@@ -1,9 +1,12 @@
+
+//http://192.168.43.126:3000/api/users/sensorslog?purp=all
 'use client'
 import React, { useState, useEffect } from "react";
 import profile from './profile.module.css'
 
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
+
 
 import Image from "next/image";
 import facebook from '../../../public/Image/facebook.png';
@@ -18,43 +21,62 @@ import { useRouter } from 'next/navigation';
 
 function page() {
   const [show, setShow] = useState(false)
-  const [myinterval, setMyinterval] = useState(false)
-  const [data, setData] = useState({ "sensor": [],"time": ""})
+
+  const [data, setData] = useState('')
+  const [excelData, setExcelData] = useState('')
+  const [loading, setLoading] = useState(false);
+  
   const router = useRouter();
   const handleShow = () => {
     setShow(!show)
   }
 
-  useEffect(() => {
-    //Implementing the setInterval method..
-    const interval = setInterval(() => {
-      getdata();
-      setMyinterval(!myinterval)
-      // console.log('Interval is running...')
-    }, 5000);
-    //Clearing the interval0
-    return () => clearInterval(interval);
-  }, [myinterval]);
 
 
 
+ 
 
- const getdata = (() => {
-    //api/users/sensorslog
+
+
+  
+
+
+
+  const getdata = async () => {
+    try {
+      const response = await fetch(window.location.origin+'/api/users/sensorslog');
+      const result = await response.json();
+      setData(result[0])
+    } 
     
-    fetch(window.location.origin+'/api/users/sensorslog')
-      .then((response) => response.json())
+    catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-      .then((mydata) => {
-       setData(mydata.result[0])
-       
-        console.log(data.sensor);
-      })
+useEffect(() => {
+    getdata();
+    
+  },[]
+);
 
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  })
+
+  useEffect(() => {
+    
+
+
+    const intervalId = setInterval(getdata, 10000);
+    return () => clearInterval(intervalId);
+  }, []);
+
+
+
+
+
+
+
+
+
 
   const onLogoff = () => {
 
@@ -73,60 +95,93 @@ function page() {
   }
 
 
-  const generateExcel = () => {
-    // Example JSON data
-    var exceldata = [
-      { Sr: '', S1: data.sensor[0], S2: data.sensor[1] ,S3: data.sensor[3],  S4: data.sensor[4], S5: data.sensor[5], S6: data.sensor[6],S7:  data.sensor[6]  }
-     
-    ];
- //exceldata = data.sensor
-    // Convert JSON to sheet
+
+
+
+
+
+
+
+
+
+
+  const generateExcel = async() => {
   
-
-    const worksheet = XLSX.utils.json_to_sheet(exceldata);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-
-  // Create Excel buffer
-  const excelBuffer = XLSX.write(workbook, {
-    bookType: 'xlsx',
-    type: 'array',
-  });
-
-// Create a Blob and download
-const blob = new Blob([excelBuffer], {
-  type:
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-});
+    try {
+      const response = await fetch(window.location.origin+'/api/users/sensorslog?purp=all');
+      const result = await response.json();
+      await setExcelData(result[0])
+    } 
+   catch (error) {
+     // setExcelData('')
+    console.error("Error fetching data:", error);
+    }
 
 
-
-  
-
-
-
-
-
-
-
-
-
-  
-
+ 
    
+    //setExcelData
     
-    saveAs(blob, 'SensorsData.xlsx');
+    const data = [
+      { Name: 'John', Age: 28, Country: 'USA' },
+      { Name: 'Anna', Age: 22, Country: 'UK' },
+    ];
 
 
 
+    
+    // Convert JSON to sheet
+     const  worksheet =  XLSX.utils.json_to_sheet(excelData);
+    const workbook =  XLSX.utils.book_new();
+     XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
 
+    // Create Excel buffer
+    const excelBuffer = await XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+
+    // Create a Blob and download
+    const blob = await new Blob([excelBuffer], {
+      type:
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+     saveAs(blob, 'example.xlsx');
   };
 
+////////////////////////////////////////////////////////////////////////////////////////////
+  const fetchDataAndCreateExcel = async () => {
+    setLoading(true);
 
+    try {
+      // Example API call
+      const res = await fetch(window.location.origin+'/api/users/sensorslog?purp=all');
+      const data = await res.json();
 
+      // Convert data to worksheet
+      const worksheet = XLSX.utils.json_to_sheet(data);
 
+      // Create a new workbook and append the worksheet
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sensor_Data');
+
+      // Generate buffer
+      const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+      // Save the file
+      const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+      saveAs(blob, 'users.xlsx');
+    } catch (error) {
+      console.error('Error creating Excel:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   
+
+
+
 
 
   return (
@@ -143,13 +198,13 @@ const blob = new Blob([excelBuffer], {
          
            </div>
           <div className={profile.Content}>
-            <div className={profile.sensor1}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />  </div>{data.sensor[0]}</div>
-            <div className={profile.sensor2}> <div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /></div>{data.sensor[1]}</div>
-            <div className={profile.sensor3}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.sensor[2]}</div>
-            <div className={profile.sensor4}> <div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.sensor[3]}</div>
-            <div className={profile.sensor5}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />{data.sensor[4]} </div></div>
-            <div className={profile.sensor6}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> {data.sensor[5]}</div></div>
-            <div className={profile.sensor7}> <div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />{data.sensor[6]} </div></div>
+            <div className={profile.sensor1}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />  </div> {data.Humidity}</div>
+            <div className={profile.sensor2}> <div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /></div>{data.Temperature}</div>
+            <div className={profile.sensor3}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.Ph}</div>
+            <div className={profile.sensor4}> <div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.H2s}</div>
+            <div className={profile.sensor5}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />{data.Ammonia} </div></div>
+            <div className={profile.sensor6}><div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.Methane}</div>
+            <div className={profile.sensor7}> <div style={{ maxWidth: '30px' }}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> </div>{data.Co2}</div>
 
           </div>
 
@@ -157,8 +212,16 @@ const blob = new Blob([excelBuffer], {
 
         <main style={{ padding: '2rem' }}>
       <h1>Download Excel File</h1>
-      <button onClick={generateExcel}>Generate Excel</button>
+      <button onClick={fetchDataAndCreateExcel} disabled={loading}>
+        {loading ? 'Generating...' : 'Generate Excel'}
+      </button>
     </main>
+     
+
+
+  
+     
+     
       </div>
 
    
