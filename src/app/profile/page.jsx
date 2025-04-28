@@ -212,7 +212,7 @@ useEffect(() => {
 
         <main style={{ padding: '2rem' }}>
       <h1>Download Excel File -Data</h1>
-    
+      <button onClick={fetchDataAndCreateExcel}> Generate Excel </button>
     </main>
      
 
