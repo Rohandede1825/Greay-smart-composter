@@ -211,7 +211,7 @@ useEffect(() => {
         </div>
 
         <main style={{ padding: '2rem' }}>
-      <h1>Download Excel File -Data</h1>
+      <h1>Download Excel File</h1>
       <button onClick={fetchDataAndCreateExcel} disabled={loading}>
         {loading ? 'Generating Excel...' : 'Generate Excel'}
      </button>
