@@ -104,6 +104,9 @@ background-color: #f1cde1;
 
  .img {
   box-sizing: border-box;
+  float:right;
+  margin-right: 3px;
+  margin-top: 3px;
    }
   
    .logoff
