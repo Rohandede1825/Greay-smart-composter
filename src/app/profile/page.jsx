@@ -14,6 +14,7 @@ import humidity from '../../../public/Image/humidity.png';
 import temperature from '../../../public/Image/temperature.png';
 import ph from '../../../public/Image/ph.png';
 import H2S from '../../../public/Image/H2S.png';
+import CO2 from '../../../public/Image/CO2.png';
 import facebook from '../../../public/Image/facebook.png';
 
 
@@ -153,7 +154,7 @@ useEffect(() => {
             <div className={profile.sensor4}> <div className={profile.sensor}><Image src={H2S} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /><br></br> {data.H2s}</div> </div>
             <div className={profile.sensor5}><div className={profile.sensor}><Image src={facebook} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /><br></br>{data.Ammonia} </div></div>
             <div className={profile.sensor6}><div className={profile.sensor}><Image src={facebook} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /> <br></br>{data.Methane}</div></div>
-            <div className={profile.sensor7}> <div className={profile.sensor}><Image src={facebook} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /> <br></br>{data.Co2}</div> </div>
+            <div className={profile.sensor7}> <div className={profile.sensor}><Image src={CO2} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /> <br></br>{data.Co2}</div> </div>
 
           </div>
 
