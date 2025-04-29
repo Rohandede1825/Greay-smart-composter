@@ -10,7 +10,7 @@ import * as XLSX from 'xlsx';
 
 import Image from "next/image";
 import facebook from '../../../public/Image/facebook.png';
-import google from '../../../public/Image/google.png';
+import humidity from '../../../public/Image/humidity.png';
 import twitter from '../../../public/Image/twitter.png';
 import hide from '../../../public/Image/hide.png';
 import sw from '../../../public/Image/show.png'
@@ -114,7 +114,7 @@ useEffect(() => {
 
       // Save the file
       const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
-      saveAs(blob, 'users.xlsx');
+      saveAs(blob, 'Sensors_Data.xlsx');
     } catch (error) {
       console.error('Error creating Excel:', error);
     } finally {
@@ -142,7 +142,7 @@ useEffect(() => {
          
            </div>
           <div className={profile.Content}>
-            <div className={profile.sensor1}> <div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />  <br></br> {data.Humidity}</div></div>
+            <div className={profile.sensor1}> <div className={profile.sensor}><Image src={humidity} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />  <br></br> {data.Humidity}</div></div>
             <div className={profile.sensor2}> <div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /><br></br>{data.Temperature}</div></div>
             <div className={profile.sensor3}><div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> <br></br>{data.Ph}</div> </div>
             <div className={profile.sensor4}> <div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /><br></br> {data.H2s}</div> </div>
