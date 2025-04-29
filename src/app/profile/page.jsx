@@ -9,9 +9,13 @@ import * as XLSX from 'xlsx';
 
 
 import Image from "next/image";
-import facebook from '../../../public/Image/facebook.png';
+
 import humidity from '../../../public/Image/humidity.png';
 import temperature from '../../../public/Image/temperature.png';
+import ph from '../../../public/Image/ph.png';
+import facebook from '../../../public/Image/facebook.png';
+
+
 import hide from '../../../public/Image/hide.png';
 import sw from '../../../public/Image/show.png'
 import { width } from "@fortawesome/free-solid-svg-icons/fa0";
@@ -144,7 +148,7 @@ useEffect(() => {
           <div className={profile.Content}>
             <div className={profile.sensor1}> <div className={profile.sensor}><Image src={humidity} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" />  <br></br> {data.Humidity}</div></div>
             <div className={profile.sensor2}> <div className={profile.sensor}><Image src={temperature} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /><br></br>{data.Temperature}</div></div>
-            <div className={profile.sensor3}><div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> <br></br>{data.Ph}</div> </div>
+            <div className={profile.sensor3}><div className={profile.sensor}><Image src={ph} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> <br></br>{data.Ph}</div> </div>
             <div className={profile.sensor4}> <div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /><br></br> {data.H2s}</div> </div>
             <div className={profile.sensor5}><div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /><br></br>{data.Ammonia} </div></div>
             <div className={profile.sensor6}><div className={profile.sensor}><Image src={facebook} className={profile.img} width={30} height={30} alt="GFG logo imported from public directory" /> <br></br>{data.Methane}</div></div>
