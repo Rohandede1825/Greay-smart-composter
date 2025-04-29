@@ -13,7 +13,7 @@ import Image from "next/image";
 import humidity from '../../../public/Image/humidity.png';
 import temperature from '../../../public/Image/temperature.png';
 import ph from '../../../public/Image/ph.png';
-import H2S from '../../../public/Image/H2S.png';
+import H2S from '../../../public/Image/H2S.svg';
 import facebook from '../../../public/Image/facebook.png';
 
 
