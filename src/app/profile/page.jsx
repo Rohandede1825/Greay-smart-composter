@@ -42,6 +42,7 @@ function page() {
     try {
       const response = await fetch(window.location.origin + '/api/users/sensorslog');
       const result = await response.json();
+   
       setData(result[0])
     }
 
@@ -137,6 +138,12 @@ function page() {
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
           </div>
 <div className={profile.Info}>
+          <button onClick={fetchDataAndCreateExcel} disabled={loading}>
+            {loading ? 'Generating Excel...' : 'Generate Excel'}
+          </button>
+ 
+
+<br></br>
 Last Updates:- {data.time}
 
           <div className={profile.Content}>
@@ -151,13 +158,7 @@ Last Updates:- {data.time}
 </div>
         </div>
 
-        <main style={{ padding: '2rem' }}>
-          <h1>Download Excel File</h1>
-          <button onClick={fetchDataAndCreateExcel} disabled={loading}>
-            {loading ? 'Generating Excel...' : 'Generate Excel'}
-          </button>
-        </main>
-
+        
 
 
 
