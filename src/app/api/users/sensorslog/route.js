@@ -24,6 +24,12 @@ export const POST = async (reqest) => {
         return NextResponse.json({ error: "Invalid data" }, { status: 400 })
     }
     const now = new Date();
+   
+    now.setHours(now.getHours() + 5);
+    now.setMinutes(now.getMinutes() + 30);
+   
+   
+   
     payload.time = now.toLocaleString()
     console.log (payload)
     
