@@ -61,21 +61,11 @@ useEffect(() => {
 
   useEffect(() => {
     
-
-
     const intervalId = setInterval(getdata, 10000);
     return () => clearInterval(intervalId);
   }, []);
 
-
-
-
-
-
-
-
-
-
+  
   const onLogoff = () => {
 
     fetch(window.location.origin + '/api/users/logoff')
@@ -148,13 +138,13 @@ useEffect(() => {
          
            </div>
           <div className={profile.Content}>
-            <div className={profile.sensor1}> <div className={profile.sensor}><Image src={humidity} className={profile.img} width={40} height={40}  alt="GFG logo imported from public directory" />  <br></br> {data.Humidity}</div></div>
-            <div className={profile.sensor2}> <div className={profile.sensor}><Image src={temperature} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /><br></br>{data.Temperature}</div></div>
-            <div className={profile.sensor3}><div className={profile.sensor}><Image src={ph} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /> <br></br>{data.Ph}</div> </div>
-            <div className={profile.sensor4}> <div className={profile.sensor}><Image src={H2S} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /><br></br> {data.H2s}</div> </div>
-            <div className={profile.sensor5}><div className={profile.sensor}><Image src={NH3} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /><br></br>{data.Ammonia} </div></div>
-            <div className={profile.sensor6}><div className={profile.sensor}><Image src={CH4} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /> <br></br>{data.Methane}</div></div>
-            <div className={profile.sensor7}> <div className={profile.sensor}><Image src={CO2} className={profile.img} width={40} height={40} alt="GFG logo imported from public directory" /> <br></br>{data.Co2}</div> </div>
+            <div className={profile.sensor1}> <div className={profile.sensor}><Image src={humidity} className={profile.img} width={40} height={40}  alt="" />  <br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Humidity}</div></div></div>
+            <div className={profile.sensor2}> <div className={profile.sensor}><Image src={temperature} className={profile.img} width={40} height={40} alt="" /><br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Temperature}</div></div></div>
+            <div className={profile.sensor3}> <div className={profile.sensor}><Image src={ph} className={profile.img} width={40} height={40} alt="" />         <br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Ph}</div> </div></div>
+            <div className={profile.sensor4}> <div className={profile.sensor}><Image src={H2S} className={profile.img} width={40} height={40} alt="" />        <br></br> <div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.H2s}</div> </div></div>
+            <div className={profile.sensor5}> <div className={profile.sensor}><Image src={NH3} className={profile.img} width={40} height={40} alt="" /><br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Ammonia} </div></div></div>
+            <div className={profile.sensor6}> <div className={profile.sensor}><Image src={CH4} className={profile.img} width={40} height={40} alt="" /> <br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Methane}</div></div></div>
+            <div className={profile.sensor7}> <div className={profile.sensor}><Image src={CO2} className={profile.img} width={40} height={40} alt="" /> <br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Co2}</div> </div></div>
 
           </div>
 

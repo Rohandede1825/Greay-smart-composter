@@ -1,4 +1,12 @@
 
+@font-face {
+  font-family: HindSMerienda;
+  src: url(../../../public/Font/Merienda-Medium.ttf);
+  weight: 400;
+	font-style: Mediumiliguri;
+}
+
+
 .bg {
   display: flex;
   flex-direction: row;
@@ -54,8 +62,26 @@ text-align: center;
 margin: 0px;
 overflow:hidden;
 padding: 0px;
+
+
+
+}
+.sensorName
+{
+  font-size: 15px;
+  font-weight: 800;
 }
 
+.sensorValue
+{
+  font-size: 30px;
+  font-family: "HindSMerienda";
+  color: #000000;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 0px;
+  
+}
 .sensor1 {
   background-color: #e7bddd;
 }
