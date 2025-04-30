@@ -42,14 +42,6 @@ function page() {
     try {
       const response = await fetch(window.location.origin + '/api/users/sensorslog');
       const result = await response.json();
-      
-      
-   
-      
-   
-  
-   
-     
       setData(result[0])
     }
 
@@ -145,7 +137,7 @@ function page() {
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
           </div>
 <div className={profile.Info}>
-{data.time}
+Last Updates:- {data.time}
 
           <div className={profile.Content}>
             <div className={profile.sensor1}> <div className={profile.sensor}><Image src={humidity} className={profile.img} width={40} height={40} alt="" />  <br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Humidity}</div></div></div>
