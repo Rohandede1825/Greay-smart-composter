@@ -44,6 +44,7 @@
 border: 1px solid #000000;
   padding: 0px;
 
+
 }
 .Info
 { margin-top: 5px;
@@ -88,7 +89,18 @@ padding: 0px;
   margin-top: 10px;
   margin-bottom: 0px;
   padding: 0px;
-  
+  display: inline-block;
+}
+
+.sensorUnit
+{position: relative;
+  font-size: 20px;
+  font-weight: 800;
+  color: #000000;
+  margin-top: 0px;
+  padding: 2px;
+  display: inline-block;
+  top: -8px;
 }
 .sensor1 {
   background-color: #e7bddd;
