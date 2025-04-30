@@ -62,7 +62,7 @@ function page() {
 
   useEffect(() => {
 
-    const intervalId = setInterval(getdata, 10000);
+    const intervalId = setInterval(getdata, 30000);
     return () => clearInterval(intervalId);
   }, []);
 
