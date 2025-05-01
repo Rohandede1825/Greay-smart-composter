@@ -17,17 +17,19 @@ else if (query === "all") {
      return NextResponse.json( data )
 }
 
-else if (query === "filter") {
-    var data = await Sensor.find().skip(0).limit(1).sort({ _id: -1 });
-    data = await Sensor.find({
-        time: {
-          $gte: ISODate("5/1/2025, 10:33:08 AM"), // Start date (inclusive)
-          $lte: ISODate("5/1/2025, 10:37:08 AM")  // End date (inclusive)
-        }
-      })
+
+else if (query === "filterbydate") {
+   console.log("filter")
+  // var dat=await Sensor.find({
+    //time: {
+      //$gte: toLocaleString ("5/1/2025, 10:06:45 AM"), // Start date (inclusive)
+    //  $lte: toLocaleString("5/1/2025, 11:06:45 AM")  // End date (inclusive)
+  //  }
+  //  });
     
-    
-    return NextResponse.json( data )
+
+   
+    return NextResponse.json('futureDate.toLocaleString()' )
 }
 
 
@@ -38,10 +40,9 @@ export const POST = async (reqest) => {
     if (payload.tkn !=="user") {
         return NextResponse.json({ error: "Invalid data" }, { status: 400 })
     }
-    const now = new Date();
-    now.setHours(now.getHours() + 5);
-    now.setMinutes(now.getMinutes() + 30);
-    payload.time = now.toLocaleString()
+    const now = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
+  
+    payload.time = now
     
     
    let status = await mongoose.connect(connectionStr)
