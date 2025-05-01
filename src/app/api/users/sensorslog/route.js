@@ -26,10 +26,10 @@ else if (query === "filterbydate") {
     //  $lte: toLocaleString("5/1/2025, 11:06:45 AM")  // End date (inclusive)
   //  }
   //  });
-    
-
-   
-    return NextResponse.json('futureDate.toLocaleString()' )
+    const date = new Date();
+    const now = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
+   //futureDate.toLocaleString()
+    return NextResponse.json( now)
 }
 
 
@@ -40,8 +40,8 @@ export const POST = async (reqest) => {
     if (payload.tkn !=="user") {
         return NextResponse.json({ error: "Invalid data" }, { status: 400 })
     }
+    const date = new Date();
     const now = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
-  
     payload.time = now
     
     
