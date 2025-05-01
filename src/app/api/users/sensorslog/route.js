@@ -16,6 +16,21 @@ else if (query === "all") {
      var data = await Sensor.find();
      return NextResponse.json( data )
 }
+
+else if (query === "filter") {
+    var data = await Sensor.find().skip(0).limit(1).sort({ _id: -1 });
+    data = await Sensor.find({
+        time: {
+          $gte: ISODate("5/1/2025, 10:33:08 AM"), // Start date (inclusive)
+          $lte: ISODate("5/1/2025, 10:37:08 AM")  // End date (inclusive)
+        }
+      })
+    
+    
+    return NextResponse.json( data )
+}
+
+
 }
 
 export const POST = async (reqest) => {
