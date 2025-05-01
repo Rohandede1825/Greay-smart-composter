@@ -68,3 +68,37 @@ export const Sensor = mongoose.models.sensorCollections || mongoose.model('senso
 
 
 
+const sensortestlogModel = new mongoose.Schema({
+
+    Humidity: {
+        type: String,
+    },
+    Temperature: {
+        type: String,
+    },
+    Ph: {
+        type: String,
+    },
+
+    H2s: {
+        type: String,
+    },
+    Ammonia: {
+        type: String,
+    },
+    Methane: {
+        type: String,
+    },
+    Co2: {
+        type: String,
+    },
+
+    time: {
+        type: String,
+    },
+    other
+        : {
+        type: String,
+    },
+});
+export const Sensortest = mongoose.models.sensorcollectiontests || mongoose.model('sensorcollectiontests', sensortestlogModel);

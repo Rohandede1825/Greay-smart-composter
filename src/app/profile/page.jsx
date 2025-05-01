@@ -1,5 +1,6 @@
 
 //http://192.168.43.126:3000/api/users/sensorslog?purp=all
+//http://192.168.43.126:3000/api/users/sensorslog?purp=filterbydate&s=2025-05-01T17:40:00Z&e=2025-05-01T17:50:00Z
 'use client'
 import React, { useState, useEffect } from "react";
 import profile from './profile.module.css'
@@ -18,6 +19,8 @@ import CO2 from '../../../public/Image/CO2.png';
 import NH3 from '../../../public/Image/NH3.png';
 import CH4 from '../../../public/Image/CH4.png';
 
+
+
 import hide from '../../../public/Image/hide.png';
 import sw from '../../../public/Image/show.png'
 import { width } from "@fortawesome/free-solid-svg-icons/fa0";
@@ -28,9 +31,23 @@ import { useRouter } from 'next/navigation';
 function page() {
   const [show, setShow] = useState(false)
 
-  const [data, setData] = useState('')
-  const [excelData, setExcelData] = useState('')
+  const [data, setData] = useState(
+    {
+
+      "Humidity": "...",
+      "Temperature": "...",
+      "Ph": "...",
+      "H2s": "--",
+      "Ammonia": "...",
+      "Methane": "...",
+      "Co2": "..",
+      "time": "updating please wait...",
+    }
+  )
+
   const [loading, setLoading] = useState(false);
+  const [Date, setDate] = useState({ StartDate: '2025-05-01T17:40:00Z', EndDate: '2025-05-01T17:50:00Z' })
+
 
   const router = useRouter();
   const handleShow = () => {
@@ -38,23 +55,37 @@ function page() {
   }
 
 
+
+  const onchangevalue = (e) => {
+    console.log(e.target.name, e.target.value)
+    setDate({ ...Date, [e.target.name]: e.target.value })
+
+  }
+
+
   const getdata = async () => {
     try {
       const response = await fetch(window.location.origin + '/api/users/sensorslog');
       const result = await response.json();
-   
-      setData(result[0])
+      setData(await result[0])
+
+        .catch(error => {
+          return
+        });
+
+
     }
 
     catch (error) {
-      console.error("Error fetching data:", error);
+      return
+      // console.error("Error fetching data:", error);
+
     }
   };
 
   useEffect(() => {
 
     getdata();
-    console.log(data)
 
   }, []
   );
@@ -96,7 +127,7 @@ function page() {
 
     try {
       // Example API call
-      const res = await fetch(window.location.origin + '/api/users/sensorslog?purp=all');
+      const res = await fetch(window.location.origin + '/api/users/sensorslog?purp=filterbydate&s=' + Date.StartDate + '&e=' + Date.EndDate);
       const exceldata = await res.json();
 
       // Convert data to worksheet
@@ -137,34 +168,51 @@ function page() {
             <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter</h1>
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
           </div>
-<div className={profile.Info}>
-          <button onClick={fetchDataAndCreateExcel} disabled={loading}>
-            {loading ? 'Generating Excel...' : 'Generate Excel'}
-          </button>
- 
 
-<br></br>
-Last Updates:- {data.time}
+          Statr Date  <input className={profile.textBox} id='2' type="text" autoComplete="off" name="StartDate" defaultValue="2025-05-01T17:40:00Z" placeholder="Type your User ID" onChange={(e) => onchangevalue(e)}></input>
+          End Date<input className={profile.textBox} id='2' type="text" autoComplete="off" name="EndDate" defaultValue="2025-05-01T17:50:00Z" placeholder="Type your User ID" onChange={(e) => onchangevalue(e)}></input>
 
-          <div className={profile.Content}>
-            <div className={profile.sensor1}> <div className={profile.sensor}><Image src={humidity}     className={profile.img} width={40} height={40} alt="" />  <br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Humidity}</div><div className={profile.sensorUnit}>%</div></div></div>
-            <div className={profile.sensor2}> <div className={profile.sensor}><Image src={temperature}  className={profile.img} width={40} height={40} alt=""/><br></br><div className={profile.sensorName}>Temperature</div><div className={profile.sensorValue}>{data.Temperature}</div><div className={profile.sensorUnit}>&#176;C</div></div></div>
-            <div className={profile.sensor3}> <div className={profile.sensor}><Image src={ph}           className={profile.img} width={40} height={40} alt="" />        <br></br><div className={profile.sensorName}>PH</div><div className={profile.sensorValue}>{data.Ph}</div> </div></div>
-            <div className={profile.sensor4}> <div className={profile.sensor}><Image src={H2S}          className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>H2S</div><div className={profile.sensorValue}>{data.H2s}</div><div className={profile.sensorUnit}>ppm</div></div></div>
-            <div className={profile.sensor5}> <div className={profile.sensor}><Image src={NH3}          className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>Ammonia</div><div className={profile.sensorValue}>{data.Ammonia} </div><div className={profile.sensorUnit}>ppm</div></div></div>
-            <div className={profile.sensor6}> <div className={profile.sensor}><Image src={CH4}          className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>Methane</div><div className={profile.sensorValue}>{data.Methane}</div><div className={profile.sensorUnit}>ppm</div></div></div>
-            <div className={profile.sensor7}> <div className={profile.sensor}><Image src={CO2}          className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>Co2    </div><div className={profile.sensorValue}>{data.Co2}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+          <div className={profile.Info}>
+            <button onClick={fetchDataAndCreateExcel} disabled={loading}>
+              {loading ? 'Generating Excel...' : 'Generate Excel'}
+            </button>
+
+
+
+
+
+
+
+
+
+
+
+            <br></br>
+            Last Updates:- {data.time}
+
+            <div className={profile.Content}>
+              <div className={profile.sensor1}> <div className={profile.sensor}><Image src={humidity} className={profile.img} width={40} height={40} alt="" />  <br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Humidity}</div><div className={profile.sensorUnit}>%</div></div></div>
+              <div className={profile.sensor2}> <div className={profile.sensor}><Image src={temperature} className={profile.img} width={40} height={40} alt="" /><br></br><div className={profile.sensorName}>Temperature</div><div className={profile.sensorValue}>{data.Temperature}</div><div className={profile.sensorUnit}>&#176;C</div></div></div>
+              <div className={profile.sensor3}> <div className={profile.sensor}><Image src={ph} className={profile.img} width={40} height={40} alt="" />        <br></br><div className={profile.sensorName}>pH</div><div className={profile.sensorValue}>{data.Ph}</div> </div></div>
+              <div className={profile.sensor4}> <div className={profile.sensor}><Image src={H2S} className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>H2S</div><div className={profile.sensorValue}>{data.H2s}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor5}> <div className={profile.sensor}><Image src={NH3} className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>Ammonia</div><div className={profile.sensorValue}>{data.Ammonia} </div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor6}> <div className={profile.sensor}><Image src={CH4} className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>Methane</div><div className={profile.sensorValue}>{data.Methane}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor7}> <div className={profile.sensor}><Image src={CO2} className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>Co2    </div><div className={profile.sensorValue}>{data.Co2}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+            </div>
           </div>
-</div>
         </div>
 
-        
+
 
 
 
 
 
       </div>
+
+
+
+
 
 
 
