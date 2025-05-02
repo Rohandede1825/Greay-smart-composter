@@ -82,13 +82,15 @@ padding: 0px;
 }
 
 .sensorValue
-{
+{position: relative;
   font-size: 30px;
   font-family: "HindSMerienda";
   color: #000000;
-  margin-top: 10px;
-  margin-bottom: 0px;
+top: 50%;
+left: 50px; ;
+  transform: translate(-50%, 0%);
   padding: 0px;
+  text-align: center;
   display: inline-block;
 }
 
@@ -100,7 +102,9 @@ padding: 0px;
   margin-top: 0px;
   padding: 2px;
   display: inline-block;
-  top: -8px;
+ bottom: 0px;
+ left: 50%;
+ transform: translate(-100%, 0%);
 }
 .sensor1 {
   background-color: #e7bddd;
