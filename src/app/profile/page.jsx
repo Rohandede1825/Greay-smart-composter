@@ -25,13 +25,31 @@ import hide from '../../../public/Image/hide.png';
 import sw from '../../../public/Image/show.png'
 import { width } from "@fortawesome/free-solid-svg-icons/fa0";
 import { useRouter } from 'next/navigation';
-
+import DateTimePicker from 'react-datetime-picker'
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 
 
 function page() {
   const [show, setShow] = useState(false)
 
-  const [data, setData] = useState(
+  
+   const [dateTime, setDateTime] = useState('2025-05-01T17:40:00Z');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Selected date and time:', dateTime);
+    // Send the dateTime value to your backend or perform other actions
+  };
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ const [data, setData] = useState(
     {
 
       "Humidity": "...",
@@ -54,7 +72,9 @@ function page() {
     setShow(!show)
   }
 
-
+ const onChange = (newValue) => {
+        setValue(newValue);
+      };
 
   const onchangevalue = (e) => {
     console.log(e.target.name, e.target.value)
@@ -169,10 +189,16 @@ function page() {
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
           </div>
 
-          Statr Date  <input className={profile.textBox} id='2' type="text" autoComplete="off" name="StartDate" defaultValue="2025-05-01T17:40:00Z" placeholder="Type your User ID" onChange={(e) => onchangevalue(e)}></input>
-          End Date<input className={profile.textBox} id='2' type="text" autoComplete="off" name="EndDate" defaultValue="2025-05-01T17:50:00Z" placeholder="Type your User ID" onChange={(e) => onchangevalue(e)}></input>
+          
 
+         
           <div className={profile.Info}>
+            
+            
+            Statr Date &nbsp; <input className={profile.textBox} id='2' type="text" autoComplete="off" name="StartDate" defaultValue="2025-05-01T17:40:00Z" placeholder="Type your User ID" onChange={(e) => onchangevalue(e)}></input>
+          &nbsp;&nbsp;
+          End Date&nbsp;<input className={profile.textBox} id='2' type="text" autoComplete="off" name="EndDate" defaultValue="2025-05-01T17:50:00Z" placeholder="Type your User ID" onChange={(e) => onchangevalue(e)}></input>
+            &nbsp;&nbsp;
             <button onClick={fetchDataAndCreateExcel} disabled={loading}>
               {loading ? 'Generating Excel...' : 'Generate Excel'}
             </button>
@@ -212,7 +238,10 @@ function page() {
 
 
 
-
+      <div>
+   <DateTimePicker value={dateTime} onChange={setDateTime} format={"y-MM-dd h:mm:ss a"} />
+      <button type="submit">Submit</button>
+        </div>
 
 
 
