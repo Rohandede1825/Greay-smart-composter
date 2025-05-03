@@ -186,7 +186,7 @@ function page() {
 
           <div>
 
-            Start Date &nbsp;   <DateTimePicker
+            Start Date:&nbsp;   <DateTimePicker
         amPmAriaLabel="Select AM/PM"
         calendarAriaLabel="Toggle calendar"
         clearAriaLabel="Clear value"
@@ -203,7 +203,7 @@ function page() {
         format={"dd-MM-y h:mm:s a"}
       />&nbsp;&nbsp;
 
-End Date&nbsp; <DateTimePicker
+End Date:&nbsp; <DateTimePicker
         amPmAriaLabel="Select AM/PM"
         calendarAriaLabel="Toggle calendar"
         clearAriaLabel="Clear value"
