@@ -65,49 +65,66 @@ border: 1px solid #000000;
 }
 
 .sensor
-{max-width: 150px;
-
+{position: relative;
+  max-width: 150px;
 text-align: center;
 margin: 0px;
-overflow:hidden;
 padding: 0px;
+}
 
+.img {
+  position: absolute;
+  box-sizing: border-box;
+  right: 0px;
+
+  margin-right: 3px;
+  margin-top: 3px;
 
 
 }
+
+
 .sensorName
-{
+{position: absolute;
   font-size: 15px;
   font-weight: 800;
+  top: 0px;
+
+left: 50%;
+  transform: translate(-80%, 30%);
+ 
 }
 
 .sensorValue
-{position: relative;
+{position: absolute;
   font-size: 30px;
   font-family: "HindSMerienda";
-  color: #000000;
-top: 50%;
-left: 50px; ;
-  transform: translate(-50%, 0%);
-  padding: 0px;
-  text-align: center;
+ color: #000000;
+ top: 8px;
+left: 50%;
+  transform: translate(-70%, 60%);
+ 
   display: inline-block;
+  padding: 0px;
+  margin: 0px;
+
 }
 
 .sensorUnit
-{position: relative;
+{position: absolute;
   font-size: 20px;
   font-weight: 800;
   color: #000000;
-  margin-top: 0px;
-  padding: 2px;
-  display: inline-block;
- bottom: 0px;
- left: 50%;
- transform: translate(-100%, 0%);
+  padding: 0px;
+top: 70px;
+right: 3%;
+ 
+
+ 
+
 }
 .sensor1 {
-  background-color: #e7bddd;
+  background-color: #e9b6dd;
 }
 
 .sensor2 {
@@ -135,7 +152,8 @@ left: 50px; ;
 }
 
 .sensor1,.sensor2,.sensor3,.sensor4,.sensor5,.sensor6,.sensor7 {
- margin: 5px;
+position: relative;
+  margin: 5px;
 flex-grow: 2;
 min-width: 150px;
 max-width: 150px;
@@ -152,12 +170,7 @@ box-sizing: border-box;
 background-color: #f1cde1;
  }
 
- .img {
-  box-sizing: border-box;
-  float:right;
-  margin-right: 3px;
-  margin-top: 3px;
-   }
+ 
   
    .logoff
    {position: relative;

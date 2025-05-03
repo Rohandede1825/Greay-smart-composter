@@ -172,6 +172,9 @@ function page() {
         </div>
         <div className={profile.Rightpanenl}>
           <div className={profile.UserInfo} >
+           
+           
+          
             <button className={profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? 'Logging Off' : ' Log Off '}</button>
             <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter</h1>
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
@@ -179,8 +182,10 @@ function page() {
 
 
 
-
           <div className={profile.Info}>
+
+          <div>
+
             Statr Date &nbsp;   <DateTimePicker
         amPmAriaLabel="Select AM/PM"
         calendarAriaLabel="Toggle calendar"
@@ -222,7 +227,7 @@ End Date&nbsp; <DateTimePicker
             </button>
 
 
-
+</div>
 
 
 
@@ -232,13 +237,13 @@ End Date&nbsp; <DateTimePicker
             Last Updates:- {data.time}
 
             <div className={profile.Content}>
-              <div className={profile.sensor1}> <div className={profile.sensor}><Image src={humidity} className={profile.img} width={40} height={40} alt="" />  <br></br><div className={profile.sensorName}>Humidity</div><div className={profile.sensorValue}>{data.Humidity}</div><div className={profile.sensorUnit}>%</div></div></div>
-              <div className={profile.sensor2}> <div className={profile.sensor}><Image src={temperature} className={profile.img} width={40} height={40} alt="" /><br></br><div className={profile.sensorName}>Temperature</div><div className={profile.sensorValue}>{data.Temperature}</div><div className={profile.sensorUnit}>&#176;C</div></div></div>
-              <div className={profile.sensor3}> <div className={profile.sensor}><Image src={ph} className={profile.img} width={40} height={40} alt="" />        <br></br><div className={profile.sensorName}>pH</div><div className={profile.sensorValue}>{data.Ph}</div> </div></div>
-              <div className={profile.sensor4}> <div className={profile.sensor}><Image src={H2S} className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>H2S</div><div className={profile.sensorValue}>{data.H2s}</div><div className={profile.sensorUnit}>ppm</div></div></div>
-              <div className={profile.sensor5}> <div className={profile.sensor}><Image src={NH3} className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>Ammonia</div><div className={profile.sensorValue}>{data.Ammonia} </div><div className={profile.sensorUnit}>ppm</div></div></div>
-              <div className={profile.sensor6}> <div className={profile.sensor}><Image src={CH4} className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>Methane</div><div className={profile.sensorValue}>{data.Methane}</div><div className={profile.sensorUnit}>ppm</div></div></div>
-              <div className={profile.sensor7}> <div className={profile.sensor}><Image src={CO2} className={profile.img} width={40} height={40} alt="" />       <br></br><div className={profile.sensorName}>Co2    </div><div className={profile.sensorValue}>{data.Co2}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor1}><div className={profile.sensor}><Image src={humidity} className={profile.img} width={40} height={40} alt=""/><div className={profile.sensorName}>Humidity</div> <div className={profile.sensorValue}>{data.Humidity}</div> <div className={profile.sensorUnit}>%</div> </div></div>
+              <div className={profile.sensor2}><div className={profile.sensor}><Image src={temperature} className={profile.img} width={40} height={40} alt=""/><div className={profile.sensorName}>Temperature</div><div className={profile.sensorValue}>{data.Temperature}</div><div className={profile.sensorUnit}>C</div></div></div>
+              <div className={profile.sensor3}><div className={profile.sensor}><Image src={ph} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>pH</div><div className={profile.sensorValue}>{data.Ph}</div></div></div>
+              <div className={profile.sensor4}><div className={profile.sensor}><Image src={H2S} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>H2S</div><div className={profile.sensorValue}>{data.H2s}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor5}><div className={profile.sensor}><Image src={NH3} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Ammonia</div><div className={profile.sensorValue}>{data.Ammonia} </div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor6}><div className={profile.sensor}><Image src={CH4} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Methane</div><div className={profile.sensorValue}>{data.Methane}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor7}><div className={profile.sensor}><Image src={CO2} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Co2    </div><div className={profile.sensorValue}>{data.Co2}</div><div className={profile.sensorUnit}>ppm</div></div></div>
             </div>
           </div>
         </div>
@@ -266,3 +271,5 @@ End Date&nbsp; <DateTimePicker
 export default page;
 //https://api.thingspeak.com/channels/2901124/feeds.json?results=1
 //<Image src={facebook} width={30} height={30}  alt="GFG logo imported from public directory"  />
+
+// <div className={profile.sensor2}> <div className={profile.sensor}>><div className={profile.sensorName}>Temperature</div><div className={profile.sensorValue}>{data.Temperature}</div><div className={profile.sensorUnit}>C</div></div></div>
