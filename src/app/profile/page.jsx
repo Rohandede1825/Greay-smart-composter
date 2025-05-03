@@ -168,8 +168,7 @@ function page() {
     <>
 
       <div className={profile.bg}>
-        <div className={profile.LeftsideBar}>
-        </div>
+       
         <div className={profile.Rightpanenl}>
           <div className={profile.UserInfo} >
            
