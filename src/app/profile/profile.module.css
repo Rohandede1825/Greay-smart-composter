@@ -86,12 +86,12 @@ padding: 0px;
 
 .sensorName
 {position: absolute;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 800;
   top: 0px;
 
 left: 50%;
-  transform: translate(-80%, 30%);
+  transform: translate(-65%, 30%);
  
 }
 
