@@ -127,10 +127,10 @@ function page() {
     setStartDaten(nstartDate) 
 
 
-   //setmyDate({ StartDate: (new Date(nstartDate + 5.5*60*60*1000))  , EndDate: (new Date(nendDate + 5.5*60*60*1000) )})
+  
    
-  setStartDaten (new Date(nstartDate + 5.5*60*60*1000));
-   setEndDaten (new Date(nendDate + 5.5*60*60*1000));
+  setStartDaten (new Date(new Date (nstartDate) + 5.5*60*60*1000));
+   setEndDaten (new Date(new Date  (nendDate) + 5.5*60*60*1000));
    console.log(nstartDate, nendDate)
    // console.log(myDate.StartDate, myDate.EndDate)
     try {
@@ -175,6 +175,7 @@ function page() {
            
           
             <button className={profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? 'Logging Off' : ' Log Off '}</button>
+            
             <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter</h1>
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
           </div>
