@@ -98,7 +98,7 @@ function page() {
 
 
   const onLogoff = () => {
-
+    setLoading1(true);
     fetch(window.location.origin + '/api/users/logoff')
       .then((response) => response.json())
 
@@ -107,6 +107,7 @@ function page() {
       })
 
       .catch((error) => {
+            setLoading1(false);
         console.error('Error:', error);
       });
 
@@ -129,6 +130,8 @@ function page() {
 
   
    
+  setStartDaten (new Date(nstartDate + 11*60*60*1000));
+   setEndDaten (new Date(nendDate + 11*60*60*1000));
   setStartDaten (new Date(new Date (nstartDate) + 5.5*60*60*1000));
    setEndDaten (new Date(new Date  (nendDate) + 5.5*60*60*1000));
    console.log(nstartDate, nendDate)
@@ -186,7 +189,7 @@ function page() {
 
           <div>
 
-            Start Date &nbsp;   <DateTimePicker
+            Start Date:&nbsp;   <DateTimePicker
         amPmAriaLabel="Select AM/PM"
         calendarAriaLabel="Toggle calendar"
         clearAriaLabel="Clear value"
@@ -203,7 +206,7 @@ function page() {
         format={"dd-MM-y h:mm:s a"}
       />&nbsp;&nbsp;
 
-End Date&nbsp; <DateTimePicker
+End Date:&nbsp; <DateTimePicker
         amPmAriaLabel="Select AM/PM"
         calendarAriaLabel="Toggle calendar"
         clearAriaLabel="Clear value"
