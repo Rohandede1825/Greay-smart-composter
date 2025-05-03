@@ -38,13 +38,6 @@ function page() {
 
 
 
-  const handleSubmit = () => {
-
-
-
-   
-
-  };
 
 
 
@@ -125,19 +118,25 @@ function page() {
   const fetchDataAndCreateExcel = async () => {
     setLoading(true);
    
-    setStartDaten(nstartDate) 
+  
 
 
   
    
  
-  setStartDaten (new Date(new Date (nstartDate) - 5.5 * 60 * 60 * 1000));
-   setEndDaten (new Date(new Date  (nendDate) - 5.5 * 60 * 60 * 1000));
+  //setStartDaten (new Date( nstartDate - 5.5 * 60 * 60 * 1000));
+  //setEndDaten (new Date( nendDate - 5.5 * 60 * 60 * 1000));
    console.log(nstartDate, nendDate)
-   // console.log(myDate.StartDate, myDate.EndDate)
+ let a =new Date( nstartDate - 5.5 * 60 * 60 * 1000)
+ let b=new Date( nendDate - 5.5 * 60 * 60 * 1000)
+a =new Date( nstartDate - 5.5 * 60 * 60 * 0)
+ b=new Date( nendDate - 5.5 * 60 * 60 * 0)
+
+
+
     try {
       // Example API call
-      const res = await fetch(window.location.origin + '/api/users/sensorslog?purp=filterbydate&s=' + nstartDate + '&e=' + nendDate);
+      const res = await fetch(window.location.origin + '/api/users/sensorslog?purp=filterbydate&s=' + a + '&e=' + b);
       const exceldata = await res.json();
 
       // Convert data to worksheet

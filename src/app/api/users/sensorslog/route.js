@@ -20,7 +20,7 @@ else if (query === "all") {
 
 
 else if (query === "filterbydate") {
-  
+
   
   const  query1  = await reqest.nextUrl.searchParams.get("s");
   const  query2  = await reqest.nextUrl.searchParams.get("e");
@@ -36,13 +36,10 @@ var end = new Date(query2);
 
 
 await Sensor.find({  time: {$gte: start, $lte: end  } })
-   .then(records => {
-
-    all=records
-  
    
-   })
-   .catch(error => {
+.then(records => { all=records})
+  
+.catch(error => {
      //Handle errors
    });
 
