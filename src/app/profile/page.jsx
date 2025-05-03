@@ -129,8 +129,7 @@ function page() {
    console.log(nstartDate, nendDate)
  let a =new Date( nstartDate - 5.5 * 60 * 60 * 1000)
  let b=new Date( nendDate - 5.5 * 60 * 60 * 1000)
-a =new Date( nstartDate - 5.5 * 60 * 60 * 0)
- b=new Date( nendDate - 5.5 * 60 * 60 * 0)
+
 
 
 
@@ -187,7 +186,7 @@ a =new Date( nstartDate - 5.5 * 60 * 60 * 0)
 
           <div>
 
-            Start Date:-&nbsp;   <DateTimePicker
+            Start Date:&nbsp;   <DateTimePicker
         amPmAriaLabel="Select AM/PM"
         calendarAriaLabel="Toggle calendar"
         clearAriaLabel="Clear value"
@@ -204,7 +203,7 @@ a =new Date( nstartDate - 5.5 * 60 * 60 * 0)
         format={"dd-MM-y h:mm:s a"}
       />&nbsp;&nbsp;
 
-End Date:-&nbsp; <DateTimePicker
+End Date:&nbsp; <DateTimePicker
         amPmAriaLabel="Select AM/PM"
         calendarAriaLabel="Toggle calendar"
         clearAriaLabel="Clear value"
