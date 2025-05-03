@@ -98,7 +98,7 @@ function page() {
 
 
   const onLogoff = () => {
-
+    setLoading1(true);
     fetch(window.location.origin + '/api/users/logoff')
       .then((response) => response.json())
 
@@ -107,6 +107,7 @@ function page() {
       })
 
       .catch((error) => {
+            setLoading1(false);
         console.error('Error:', error);
       });
 
