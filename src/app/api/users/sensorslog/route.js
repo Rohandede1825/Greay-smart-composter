@@ -27,10 +27,10 @@ else if (query === "filterbydate") {
 console.log(query1,query2)
 //2025-05-01T09:38:00Z
 var start = new Date(query1);
-  start = new Date(start.getTime() );
+  start = new Date(start.getTime()+ 5.5 * 60 * 60 * 1000 );
 
 var end = new Date(query2);
-    end = new Date(end.getTime() );
+    end = new Date(end.getTime()+ 5.5 * 60 * 60 * 1000 );
 
   
 
