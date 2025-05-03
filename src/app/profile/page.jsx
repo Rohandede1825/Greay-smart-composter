@@ -129,8 +129,8 @@ function page() {
 
    //setmyDate({ StartDate: (new Date(nstartDate + 5.5*60*60*1000))  , EndDate: (new Date(nendDate + 5.5*60*60*1000) )})
    
-  setStartDaten (new Date(nstartDate + 5.5*60*60*1000));
-   setEndDaten (new Date(nendDate + 5.5*60*60*1000));
+  setStartDaten (new Date(nstartDate + 11*60*60*1000));
+   setEndDaten (new Date(nendDate + 11*60*60*1000));
    console.log(nstartDate, nendDate)
    // console.log(myDate.StartDate, myDate.EndDate)
     try {
