@@ -22,33 +22,12 @@ import 'react-clock/dist/Clock.css';
 
 
 function page() {
-  const [show, setShow] = useState(false)
   const [data, setData] = useState({ "Humidity": "...", "Temperature": "...", "Ph": "...", "H2s": "--", "Ammonia": "...", "Methane": "...", "Co2": "..", "time": "updating please wait...", })
   const [loading, setLoading] = useState(false);
   const [loading1, setLoading1] = useState(false);
-  const [myDate, setmyDate] = useState({ StartDate: '2025-05-01T17:40:00Z', EndDate: '2025-05-01T17:50:00Z' })
   const [nstartDate, setStartDaten] = useState(new Date());
   const [nendDate, setEndDaten] = useState(new Date());
-
-
   const router = useRouter();
-  const handleShow = () => {
-    setShow(!show)
-  }
-
-
-
-
-
-
- 
-
-  const onchangevalue = (e) => {
-    console.log(e.target.name, e.target.value)
-    setmyDate({ ...myDate, [e.target.name]: e.target.value })
-
-  }
-
 
   const getdata = async () => {
     try {
@@ -100,7 +79,7 @@ function page() {
       })
 
       .catch((error) => {
-            setLoading1(false);
+           // setLoading1(false);
         console.error('Error:', error);
       });
 
@@ -108,30 +87,11 @@ function page() {
   }
 
 
-
-
-
-
-
-
   ////////////////////////////////////////////////////////////////////////////////////////////
   const fetchDataAndCreateExcel = async () => {
     setLoading(true);
-   
-  
-
-
-  
-   
- 
-  //setStartDaten (new Date( nstartDate - 5.5 * 60 * 60 * 1000));
-  //setEndDaten (new Date( nendDate - 5.5 * 60 * 60 * 1000));
-   console.log(nstartDate, nendDate)
  let a =new Date( nstartDate - 5.5 * 60 * 60 * 1000)
  let b=new Date( nendDate - 5.5 * 60 * 60 * 1000)
-
-
-
 
     try {
       // Example API call
@@ -176,6 +136,8 @@ function page() {
           
             <button className={profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? 'Logging Off' : ' Log Off '}</button>
             
+
+
             <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter</h1>
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
           </div>
@@ -222,9 +184,7 @@ End Date:&nbsp; <DateTimePicker
 
 
 &nbsp;&nbsp;
-            <button onClick={fetchDataAndCreateExcel} disabled={loading}>
-              {loading ? 'Generating Excel...' : 'Generate Excel'}
-            </button>
+            <button onClick={fetchDataAndCreateExcel} disabled={loading}>{loading ? 'Generating Excel...' : 'Generate Excel'}</button>
 
 
 </div>
@@ -234,7 +194,7 @@ End Date:&nbsp; <DateTimePicker
 
 
             <br></br>
-            Last Updates:- {data.time}
+            Last Updates:- {new Date(new Date (data.time)- 5.5 * 60 * 60 * 1000).toLocaleString()}
 
             <div className={profile.Content}>
               <div className={profile.sensor1}><div className={profile.sensor}><Image src={humidity} className={profile.img} width={40} height={40} alt=""/><div className={profile.sensorName}>Humidity</div> <div className={profile.sensorValue}>{data.Humidity}</div> <div className={profile.sensorUnit}>%</div> </div></div>
