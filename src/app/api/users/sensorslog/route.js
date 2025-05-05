@@ -65,14 +65,12 @@ export const POST = async (reqest) => {
    let status = await mongoose.connect(connectionStr)
   status = new Sensor(payload)
      await status.save()
-    return NextResponse.json(({ sucess: true, time : payload} ), { status: 202 } )
+    return NextResponse.json(({ sucess: true} ), { status: 202 } )
 }
 
 
 
 export const DELETE = async (reqest) => {
- 
-    
   await mongoose.connect(connectionStr)
   await Sensor.deleteMany()
 return NextResponse.json(({ sucess: true }), { status: 202 })
