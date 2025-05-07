@@ -19,6 +19,7 @@ import DateTimePicker from 'react-datetime-picker'
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
+import LineGraph from "../Cpmponents/LineGraph";
 
 
 function page() {
@@ -219,7 +220,7 @@ End Date:&nbsp; <DateTimePicker
 
 
 
-
+<LineGraph data={data} />
 
 
       

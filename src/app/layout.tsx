@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Greya Smart Composter",
   description: "A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting",
+
 };
 
 export default function RootLayout({
@@ -27,6 +28,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+<title>DashBoard</title>
+
+
+
+<meta name="theme-color" content="#561b57" />
+
+
+</head>
+      
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
