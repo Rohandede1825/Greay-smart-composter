@@ -214,6 +214,20 @@ End Date:&nbsp; <DateTimePicker
               <div className={profile.sensor6}><div className={profile.sensor}><Image src={CH4} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Methane</div><div className={profile.sensorValue}>{data.Methane}</div><div className={profile.sensorUnit}>ppm</div></div></div>
               <div className={profile.sensor7}><div className={profile.sensor}><Image src={CO2} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Co2    </div><div className={profile.sensorValue}>{data.Co2}</div><div className={profile.sensorUnit}>ppm</div></div></div>
             </div>
+
+
+<div className={profile.Content}>
+             <div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} /></div></div>
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Temperature} time={data.time} Label={'Temperature'}  priviousData={my} mykey={'Temperature'}/></div></div>     
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ph} time={data.time} Label={'pH'}  priviousData={my} mykey={'Ph'} /></div></div>     
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.H2s} time={data.time} Label={'H2S'}  priviousData={my} mykey={'H2s'}/></div></div>
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'}  priviousData={my} mykey={'Ammonia'} /></div></div>
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Methane} time={data.time} Label={'Methane'}  priviousData={my} mykey={'Methane'} /></div></div>     
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Co2} time={data.time} Label={'CO2'}  priviousData={my} mykey={'Co2'}/></div></div>
+
+            </div>
+
+
           </div>
         </div>
 
@@ -231,13 +245,7 @@ End Date:&nbsp; <DateTimePicker
      <h1> Under development </h1><br></br>
       <br></br>  
 
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} /></div></div>
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Temperature} time={data.time} Label={'Temperature'}  priviousData={my} mykey={'Temperature'}/></div></div>     
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ph} time={data.time} Label={'pH'}  priviousData={my} mykey={'Ph'} /></div></div>     
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.H2s} time={data.time} Label={'H2S'}  priviousData={my} mykey={'H2s'}/></div></div>
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'}  priviousData={my} mykey={'Ammonia'} /></div></div>
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Methane} time={data.time} Label={'Methane'}  priviousData={my} mykey={'Methane'} /></div></div>     
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Co2} time={data.time} Label={'CO2'}  priviousData={my} mykey={'Co2'}/></div></div>
+
 
     </>
   );
