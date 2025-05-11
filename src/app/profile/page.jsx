@@ -24,10 +24,12 @@ import LineGraph from "../Cpmponents/LineGraph";
 
 function page() {
   const [data, setData] = useState({ "Humidity": "...", "Temperature": "...", "Ph": "...", "H2s": "--", "Ammonia": "...", "Methane": "...", "Co2": "..", "time": "updating please wait...", })
+
   const [loading, setLoading] = useState(false);
   const [loading1, setLoading1] = useState(false);
   const [nstartDate, setStartDaten] = useState(new Date());
   const [nendDate, setEndDaten] = useState(new Date());
+  const [my, setMy] = useState('null');
   const router = useRouter();
 
   const getdata = async () => {
@@ -35,35 +37,43 @@ function page() {
       const response = await fetch(window.location.origin + '/api/users/sensorslog');
       const result = await response.json();
       setData(await result[0])
-//console.log(await result[0])
+    
         .catch(error => {
           return
         });
-
-       
     }
-    
     catch (error) {
       return
-      // console.error("Error fetching data:", error);
-
+    
     }
 
   };
 
-  useEffect(() => {
 
-    getdata();
+  const getFirstGraphdata = async () => {
+    
+  try {
+    const response = await fetch(window.location.origin + '/api/users/sensorslog?purp=20');
+    const graphData = await response.json();
+   //console.log(graphData)
+    setMy(graphData);
+ 
+  } catch (error) {
+    
+  }
+ 
+  };
   
 
-  }, []
-  );
 
 
 
   useEffect(() => {
+  
+    getdata();
+    getFirstGraphdata();
 
-    const intervalId = setInterval(getdata, 30000);
+    const intervalId = setInterval(getdata, 10000);
     return () => clearInterval(intervalId);
   }, []);
 
@@ -79,7 +89,7 @@ function page() {
 
       .catch((error) => {
            // setLoading1(false);
-        console.error('Error:', error);
+    
       });
 
 
@@ -221,13 +231,13 @@ End Date:&nbsp; <DateTimePicker
      <h1> Under development </h1><br></br>
       <br></br>  
 
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} /></div></div>
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} /></div></div>     
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ph} time={data.time} Label={'Ph'} /></div></div>     
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.H2s} time={data.time} Label={'Humidity'} /></div></div>
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} /></div></div>
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Methane} time={data.time} Label={'Methane'} /></div></div>     
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Co2} time={data.time} Label={'CO2'} /></div></div>
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} /></div></div>
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Temperature} time={data.time} Label={'Temperature'}  priviousData={my} mykey={'Temperature'}/></div></div>     
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ph} time={data.time} Label={'pH'}  priviousData={my} mykey={'Ph'} /></div></div>     
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.H2s} time={data.time} Label={'H2S'}  priviousData={my} mykey={'H2s'}/></div></div>
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'}  priviousData={my} mykey={'Ammonia'} /></div></div>
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Methane} time={data.time} Label={'Methane'}  priviousData={my} mykey={'Methane'} /></div></div>     
+<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Co2} time={data.time} Label={'CO2'}  priviousData={my} mykey={'Co2'}/></div></div>
 
     </>
   );

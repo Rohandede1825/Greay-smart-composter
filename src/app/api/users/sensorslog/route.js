@@ -13,6 +13,9 @@ export const GET = async (reqest) => {
 var data = await Sensor.find().skip(0).limit(1).sort({ _id: -1 });
     return NextResponse.json(data)
 }
+
+
+
 else if (query === "all") {
      var data = await Sensor.find();
      return NextResponse.json( data )
@@ -20,8 +23,6 @@ else if (query === "all") {
 
 
 else if (query === "filterbydate") {
-
-  
   const  query1  = await reqest.nextUrl.searchParams.get("s");
   const  query2  = await reqest.nextUrl.searchParams.get("e");
 console.log(query1,query2)
@@ -31,10 +32,6 @@ var start = new Date(query1);
 
 var end = new Date(query2);
     end = new Date(end.getTime()+ 5.5 * 60 * 60 * 1000 );
-
-  
-
-
 await Sensor.find({  time: {$gte: start, $lte: end  } })
    
 .then(records => { all=records})
@@ -42,12 +39,18 @@ await Sensor.find({  time: {$gte: start, $lte: end  } })
 .catch(error => {
      //Handle errors
    });
-
-
-
-
-    return NextResponse.json(all)
+  return NextResponse.json(all)
 }
+
+else if (query === "20") {
+ 
+var data = await Sensor.find().sort({ _id: -1 }).limit(15);
+  data = data.reverse();
+ // console.log(data)
+return NextResponse.json(data)
+}
+
+
 
 
 }

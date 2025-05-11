@@ -11,6 +11,8 @@ import {
   Legend,
 } from 'chart.js';
 import { color } from 'chart.js/helpers';
+import { preProcessFile } from "typescript";
+;
 
 
 
@@ -25,14 +27,32 @@ ChartJS.register(
 
 
 
-const LineGraph = (props) => {
+const LineGraph =  (props) => {
 
   const [chartData, setChartData] = useState({
     labels:  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
-    datasets:[150, 200, 180, 220, 300, 250, 270, 290, 210, 340, 350, 370, 100, 340, 400],
+    datasets:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   });
 const [graphtime, setGraphTime] = useState(null)
+const [repeat, setRepeat] = useState(false)
 
+  var data2 = {
+    labels: chartData.labels,
+    datasets: [
+      {
+        label: props.Label,
+        data: chartData.datasets ,
+        borderColor: 'rgba(75,192,192,1)',
+        backgroundColor: 'rgba(75,192,192,0.2)',
+        tension: 0,
+        pointRadius: 1.5,
+        pointHoverRadius: 7,
+        fill: true,
+        borderWidth: 1,
+      },
+    ],
+  };
+const [graphdata, setGraphData] = useState(1)
   var data2 = {
     labels: chartData.labels,
     datasets: [
@@ -52,24 +72,60 @@ const [graphtime, setGraphTime] = useState(null)
 
 
 
+
+useEffect(() => {
+  
+  if (props.priviousData != null || props.priviousData != undefined )   {
+  
+  if (props.priviousData.length > 5) {
+    if(repeat !== true){
+
+ props.priviousData.map((data, index) => {
+      if (index < 15) {
+        chartData.datasets[index] = data[props.mykey]
+        chartData.labels[index] = new Date(new Date (data.time)- 5.5 * 60 * 60 * 1000).getMinutes()
+      }
+    })
+
+
+
+console.log(props.priviousData[0][props.mykey])   
+setGraphData(props.priviousData[0]._id)
+    setRepeat(true)
+  }
+
+  setGraphData(props.priviousData[0]._id)
+ setRepeat(true)
+} 
+}
+  }
+
+, );
+
+
+
+
   useEffect(() => {
+
+
+   
  
   
+
+
+
+
     if (props.data === "...") {
     return}
    if (props.time === graphtime) {
     return
     }
-    
 setGraphTime(props.time)
-
-    //console.log(new Date(new Date (props.time)- 5.5 * 60 * 60 * 1000).getMinutes())
-
     chartData.datasets.shift()
     chartData.datasets.push(Number(props.data))
-
     chartData.labels.shift()
     chartData.labels.push(new Date(new Date (props.time)- 5.5 * 60 * 60 * 1000).getMinutes())
+
   },);
 
 
@@ -100,7 +156,8 @@ setGraphTime(props.time)
     <>
 
       <div style={{ display: 'inline-block', border: '1px, solid, black', margin: '5px' }}><div style={{ position: 'relative', width: '100%', height: '150px', display: 'inline-block' }}><Line data={data2} options={options} /></div></div>
-
+                                                                                                                                                                                         
+                                
 
     </>
   );
