@@ -1,0 +1,65 @@
+
+
+
+.Content {
+
+  margin-top: 5px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+}
+
+.container{
+margin: 5px;
+ position: relative;
+    display:'inline-block';
+  height: 260px;
+  border: 1px solid #000000;
+ 
+z-index: 3;
+   background-color: white;
+}
+
+.heading
+{height:  90px;
+   padding: 0px; 
+}
+
+.sensorName
+{
+position: absolute;
+font-size: 25px;
+font-weight: 800;
+top: 0px;
+left: 50%;
+transform: translate(-50%, 20%);
+}
+
+.sensorValue
+{
+     position: absolute;
+  font-size: 40px;
+  font-family: "HindSMerienda";
+  color: #000000;
+
+  left: 50%;
+  transform: translate(-50%, 60%);
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+}
+
+.sensorUnit
+{
+      position: absolute;
+  font-size: 28px;
+  font-weight: 800;
+  color: #000000;
+  padding: 0px;
+  top: 55px;
+  right: 3%;
+}
+
+

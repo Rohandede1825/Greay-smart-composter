@@ -10,6 +10,9 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+
+
+
 import { color } from 'chart.js/helpers';
 import { preProcessFile } from "typescript";
 ;
@@ -22,7 +25,11 @@ ChartJS.register(
   LinearScale,
   PointElement,
   Tooltip,
-  Legend
+  Legend,
+
+  
+ 
+
 );
 
 
@@ -30,28 +37,11 @@ ChartJS.register(
 const LineGraph =  (props) => {
 
   const [chartData, setChartData] = useState({
-    labels:  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
+    labels:  ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
     datasets:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   });
 const [graphtime, setGraphTime] = useState(null)
 const [repeat, setRepeat] = useState(false)
-
-  var data2 = {
-    labels: chartData.labels,
-    datasets: [
-      {
-        label: props.Label,
-        data: chartData.datasets ,
-        borderColor: 'rgba(75,192,192,1)',
-        backgroundColor: 'rgba(75,192,192,0.2)',
-        tension: 0,
-        pointRadius: 1.5,
-        pointHoverRadius: 7,
-        fill: true,
-        borderWidth: 1,
-      },
-    ],
-  };
 const [graphdata, setGraphData] = useState(1)
   var data2 = {
     labels: chartData.labels,
@@ -136,17 +126,24 @@ setGraphTime(props.time)
   const options = {
     responsive: true,
     plugins: {
+      
+ customCanvasBackgroundColor: {
+        color: 'black',
+    },
+
       legend: {
-        position: 'top',
+          backgroundColor:"black",
+        position: 'bottom',
+        color:'red',
         labels: {
-          color: 'black',
           font: {
             size: 14,
             family: 'Arial',
             weight: 'bold',
           },
         },
-      }
+      },
+  legend:false,
     },
   };
 
@@ -155,7 +152,7 @@ setGraphTime(props.time)
   return (
     <>
 
-      <div style={{ display: 'inline-block', border: '1px, solid, black', margin: '5px' }}><div style={{ position: 'relative', width: '100%', height: '150px', display: 'inline-block' }}><Line data={data2} options={options} /></div></div>
+      <div style={{ backgroundColor: 'rgb(255, 255, 255)', display: 'inline-block', border: '1px, solid, black', margin: '5px' }}><div style={{ position: 'relative', width: '100%', height: '150px', display: 'inline-block' }}><Line data={data2} options={options} /></div></div>
                                                                                                                                                                                          
                                 
 

@@ -4,6 +4,7 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import profile from './profile.module.css'
+import profile1 from './page1.module.css'
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import Image from "next/image";
@@ -205,32 +206,26 @@ End Date:&nbsp; <DateTimePicker
             <br></br>
             Last Updates:- {new Date(new Date (data.time)- 5.5 * 60 * 60 * 1000).toLocaleString()}
 
-            <div className={profile.Content}>
-              <div className={profile.sensor1}><div className={profile.sensor}><Image src={humidity} className={profile.img} width={40} height={40} alt=""/><div className={profile.sensorName}>Humidity</div> <div className={profile.sensorValue}>{data.Humidity}</div> <div className={profile.sensorUnit}>%</div> </div></div>
-              <div className={profile.sensor2}><div className={profile.sensor}><Image src={temperature} className={profile.img} width={40} height={40} alt=""/><div className={profile.sensorName}>Temperature</div><div className={profile.sensorValue}>{data.Temperature}</div><div className={profile.sensorUnit}>&#176;C</div></div></div>
-              <div className={profile.sensor3}><div className={profile.sensor}><Image src={ph} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>pH</div><div className={profile.sensorValue}>{data.Ph}</div><div className={profile.sensorUnit}>pH</div></div></div>
-              <div className={profile.sensor4}><div className={profile.sensor}><Image src={H2S} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>H2S</div><div className={profile.sensorValue}>{data.H2s}</div><div className={profile.sensorUnit}>ppm</div></div></div>
-              <div className={profile.sensor5}><div className={profile.sensor}><Image src={NH3} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Ammonia</div><div className={profile.sensorValue}>{data.Ammonia} </div><div className={profile.sensorUnit}>ppm</div></div></div>
-              <div className={profile.sensor6}><div className={profile.sensor}><Image src={CH4} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Methane</div><div className={profile.sensorValue}>{data.Methane}</div><div className={profile.sensorUnit}>ppm</div></div></div>
-              <div className={profile.sensor7}><div className={profile.sensor}><Image src={CO2} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Co2    </div><div className={profile.sensorValue}>{data.Co2}</div><div className={profile.sensorUnit}>ppm</div></div></div>
-            </div>
+            
 
 
-<div className={profile.Content}>
-             <div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} /></div></div>
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Temperature} time={data.time} Label={'Temperature'}  priviousData={my} mykey={'Temperature'}/></div></div>     
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ph} time={data.time} Label={'pH'}  priviousData={my} mykey={'Ph'} /></div></div>     
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.H2s} time={data.time} Label={'H2S'}  priviousData={my} mykey={'H2s'}/></div></div>
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'}  priviousData={my} mykey={'Ammonia'} /></div></div>
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Methane} time={data.time} Label={'Methane'}  priviousData={my} mykey={'Methane'} /></div></div>     
-<div  style={{  display:'inline-block', border: '1px, solid, black', margin:'5px' }}> <div style={{ position: 'relative', width: '100%', height: '150px', display:'inline-block'  }}><LineGraph data={data.Co2} time={data.time} Label={'CO2'}  priviousData={my} mykey={'Co2'}/></div></div>
+<div className={profile1.Content}>
+
+<div className={profile1.container} style={{backgroundColor: 'rgb(182, 130, 99)'}}><div className={profile1.heading} ><Image src={humidity} className={profile.img} width={40} height={40} alt=""/> <div className={profile1.sensorName}>Humidity</div> <div className={profile1.sensorValue}>{data.Humidity}</div> <div className={profile1.sensorUnit}>%</div> </div> <LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} /></div>
+<div className={profile1.container} style={{backgroundColor: 'rgb(161, 155, 92)'}}><div className={profile1.heading} ><Image src={temperature} className={profile.img} width={40} height={40} alt=""/><div className={profile1.sensorName}>Temperature</div><div className={profile1.sensorValue}>{data.Temperature}</div><div className={profile1.sensorUnit}>&#176;C</div></div><LineGraph data={data.Temperature} time={data.time} Label={'Temperature'}  priviousData={my} mykey={'Temperature'}/></div>    
+<div className={profile1.container} style={{backgroundColor: 'rgb(123, 168, 105)'}}><div className={profile1.heading} ><Image src={ph} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>pH</div><div className={profile1.sensorValue}>{data.Ph}</div><div className={profile1.sensorUnit}>pH</div></div><LineGraph data={data.Ph} time={data.time} Label={'pH'}  priviousData={my} mykey={'Ph'} /></div> 
+<div className={profile1.container} style={{backgroundColor: 'rgb(166, 185, 211)'}}><div className={profile1.heading} ><Image src={H2S} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>H2S</div><div className={profile1.sensorValue}>{data.H2s}</div><div className={profile1.sensorUnit}>ppm</div></div><LineGraph data={data.H2s} time={data.time} Label={'H2S'}  priviousData={my} mykey={'H2s'}/></div>
+<div className={profile1.container} style={{backgroundColor: 'rgb(197, 146, 194)'}}><div className={profile1.heading}><Image src={NH3} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>Ammonia</div><div className={profile1.sensorValue}>{data.Ammonia} </div><div className={profile1.sensorUnit}>ppm</div></div><LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'}  priviousData={my} mykey={'Ammonia'} /></div>
+<div className={profile1.container} style={{backgroundColor: 'rgb(236, 137, 174)'}}><div className={profile1.heading} ><Image src={CH4} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>Methane</div><div className={profile1.sensorValue}>{data.Methane}</div><div className={profile1.sensorUnit}>ppm</div></div><LineGraph data={data.Methane} time={data.time} Label={'Methane'}  priviousData={my} mykey={'Methane'} /></div>    
+<div className={profile1.container} style={{backgroundColor: 'rgb(175, 130, 132)'}}><div className={profile1.heading} ><Image src={CO2} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>Co2    </div><div className={profile1.sensorValue}>{data.Co2}</div><div className={profile1.sensorUnit}>ppm</div></div><LineGraph data={data.Co2} time={data.time} Label={'CO2'}  priviousData={my} mykey={'CO2'}/></div>
 
             </div>
 
 
           </div>
-        </div>
 
+
+        </div>
 
 
 
@@ -244,7 +239,15 @@ End Date:&nbsp; <DateTimePicker
 
      <h1> Under development </h1><br></br>
       <br></br>  
-
+<div className={profile.Content}> 
+              <div className={profile.sensor1}><div className={profile.sensor}><Image src={humidity} className={profile.img} width={40} height={40} alt=""/><div className={profile.sensorName}>Humidity</div> <div className={profile.sensorValue}>{data.Humidity}</div> <div className={profile.sensorUnit}>%</div> </div></div>
+              <div className={profile.sensor2}><div className={profile.sensor}><Image src={temperature} className={profile.img} width={40} height={40} alt=""/><div className={profile.sensorName}>Temperature</div><div className={profile.sensorValue}>{data.Temperature}</div><div className={profile.sensorUnit}>&#176;C</div></div></div>
+              <div className={profile.sensor3}><div className={profile.sensor}><Image src={ph} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>pH</div><div className={profile.sensorValue}>{data.Ph}</div><div className={profile.sensorUnit}>pH</div></div></div>
+              <div className={profile.sensor4}><div className={profile.sensor}><Image src={H2S} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>H2S</div><div className={profile.sensorValue}>{data.H2s}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor5}><div className={profile.sensor}><Image src={NH3} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Ammonia</div><div className={profile.sensorValue}>{data.Ammonia} </div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor6}><div className={profile.sensor}><Image src={CH4} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Methane</div><div className={profile.sensorValue}>{data.Methane}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+              <div className={profile.sensor7}><div className={profile.sensor}><Image src={CO2} className={profile.img} width={40} height={40} alt="" /><div className={profile.sensorName}>Co2    </div><div className={profile.sensorValue}>{data.Co2}</div><div className={profile.sensorUnit}>ppm</div></div></div>
+            </div>
 
 
     </>
