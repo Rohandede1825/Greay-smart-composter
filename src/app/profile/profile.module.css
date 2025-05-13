@@ -99,7 +99,7 @@ transform: translateX(50%);
   right: 50%;
 transform: translate(50%, 50% );
 overflow: hidden;
- text-size-adjust: auto;
+ text-size-adjust: 0.5;
 }
 
 .sensorUnit {
