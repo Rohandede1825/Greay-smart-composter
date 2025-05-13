@@ -76,36 +76,40 @@
 
 .sensorName {
   position: absolute;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 800;
-  top: 0px;
-  left: 50%;
-  transform: translate(-70%, 30%);
+  top:2px;
+  right: 50%;
+transform: translateX(50%);
+
+ 
+
 
 }
 
 .sensorValue {
   position: absolute;
-  font-size: 30px;
+  font-size: 25px;
   font-family: "HindSMerienda";
   color: #000000;
-  top: 8px;
-  left: 50%;
-  transform: translate(-70%, 60%);
   display: inline-block;
   padding: 0px;
   margin: 0px;
-
+  top:50%;
+  right: 50%;
+transform: translate(50%, 50% );
+overflow: hidden;
+ text-size-adjust: auto;
 }
 
 .sensorUnit {
   position: absolute;
-  font-size: 20px;
+  font-size: 10px;
   font-weight: 800;
   color: #000000;
   padding: 0px;
-  top: 70px;
-  right: 3%;
+bottom: 15px;
+  left: 5%;
 
 
 }
@@ -148,12 +152,13 @@
   position: relative;
   margin: 5px;
   flex-grow: 2;
-  min-width: 150px;
-  max-width: 150px;
-  height: 100px;
-  border-radius: 10px;
+
+
+  height: 70px;
+  border-radius: 7px;
   box-sizing: border-box;
   padding: 0px;
+ 
 }
 
 .sensor1:hover,
