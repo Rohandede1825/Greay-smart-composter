@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import profile1 from '../profile/page1.module.css'
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -151,6 +152,11 @@ setGraphTime(props.time)
 
   return (
     <>
+
+
+
+
+ 
 
       <div style={{ backgroundColor: 'rgb(255, 255, 255)', display: 'inline-block', border: '1px, solid, black', margin: '5px' }}><div style={{ position: 'relative', width: '100%', height: '150px', display: 'inline-block' }}><Line data={data2} options={options} /></div></div>
                                                                                                                                                                                          

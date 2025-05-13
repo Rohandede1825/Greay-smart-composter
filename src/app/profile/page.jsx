@@ -21,6 +21,7 @@ import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 import LineGraph from "../Cpmponents/LineGraph";
+import LineGraph1 from "../Cpmponents/LineGraph1";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function page() {
@@ -69,7 +70,7 @@ function page() {
   useEffect(() => {
     getdata();
     getFirstGraphdata();
-    const intervalId = setInterval(getdata, 30000);
+    const intervalId = setInterval(getdata, 10000);
     return () => clearInterval(intervalId);
   }, []);
   const onLogoff = () => {
@@ -194,33 +195,21 @@ function page() {
           
           <div className="text-center">
 Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleString()}
+</div> 
+
+
+<div className={profile1.Content}>
+<LineGraph1 data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} image={humidity} bg={'rgb(182, 130, 99)'}/>
+<LineGraph1 data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} image={temperature} bg={'rgb(114, 99, 182)'}/>
+<LineGraph1 data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} image={ph} bg={'rgb(177, 182, 99)'} />
+<LineGraph1 data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} image={H2S} bg={'rgb(99, 182, 134)'}/>
+<LineGraph1 data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(99, 182, 178)'}/>
+<LineGraph1 data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={H2S} bg={'rgb(159, 99, 182)'}/>
+<LineGraph1 data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'}  image={CO2} bg={'rgb(182, 99, 99)'}/>
 </div>
-
-           
-
-    
-<div className="container">
-<div className="row justify-content-center">
-<div className="col-md-6">
-
-</div></div></div>
-
-        <div className={profile1.Content}>
-              <div className={profile1.container} style={{ backgroundColor: 'rgb(182, 130, 99)' }}><div className={profile1.heading} ><Image src={humidity} className={profile.img} width={40} height={40} alt="" /> <div className={profile1.sensorName}>Humidity</div> <div className={profile1.sensorValue}>{data.Humidity}</div> <div className={profile1.sensorUnit}>%</div> </div> <LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} /></div>
-             
-              <div className={profile1.container} style={{ backgroundColor: 'rgb(161, 155, 92)' }}><div className={profile1.heading} ><Image src={temperature} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>Temperature</div><div className={profile1.sensorValue}>{data.Temperature}</div><div className={profile1.sensorUnit}>&#176;C</div></div><LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} /></div>
-              <div className={profile1.container} style={{ backgroundColor: 'rgb(123, 168, 105)' }}><div className={profile1.heading} ><Image src={ph} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>pH</div><div className={profile1.sensorValue}>{data.Ph}</div><div className={profile1.sensorUnit}>pH</div></div><LineGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} /></div>
-              <div className={profile1.container} style={{ backgroundColor: 'rgb(166, 185, 211)' }}><div className={profile1.heading} ><Image src={H2S} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>H2S</div><div className={profile1.sensorValue}>{data.H2s}</div><div className={profile1.sensorUnit}>ppm</div></div><LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} /></div>
-              <div className={profile1.container} style={{ backgroundColor: 'rgb(197, 146, 194)' }}><div className={profile1.heading}><Image src={NH3} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>Ammonia</div><div className={profile1.sensorValue}>{data.Ammonia} </div><div className={profile1.sensorUnit}>ppm</div></div><LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} /></div>
-              <div className={profile1.container} style={{ backgroundColor: 'rgb(236, 137, 174)' }}><div className={profile1.heading} ><Image src={CH4} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>Methane</div><div className={profile1.sensorValue}>{data.Methane}</div><div className={profile1.sensorUnit}>ppm</div></div><LineGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} /></div>
-              <div className={profile1.container} style={{ backgroundColor: 'rgb(175, 130, 132)' }}><div className={profile1.heading} ><Image src={CO2} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>Co2    </div><div className={profile1.sensorValue}>{data.Co2}</div><div className={profile1.sensorUnit}>ppm</div></div><LineGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} /></div>
-
-            </div>
           </div>
         </div>
       </div>
-
-
 
 
 
