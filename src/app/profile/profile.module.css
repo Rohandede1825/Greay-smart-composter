@@ -14,13 +14,7 @@
   box-sizing: border-box;
 }
 
-.LeftsideBar {
 
-  background-color: #f0c9b2;
-  box-sizing: border-box;
-  flex: 13%;
-  min-width: 170px;
-}
 
 
 .Rightpanenl {
@@ -41,7 +35,7 @@
 
 .Info {
   margin-top: 5px;
-  background-color: #ffffff;
+  background-color: #f5f0e0;
   border: 2px solid #000000;
   padding: 1px;
   padding-top: 10px;

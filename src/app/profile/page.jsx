@@ -21,7 +21,7 @@ import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 import LineGraph from "../Cpmponents/LineGraph";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function page() {
   const [data, setData] = useState({ "Humidity": "...", "Temperature": "...", "Ph": "...", "H2s": "--", "Ammonia": "...", "Methane": "...", "Co2": "..", "time": "updating please wait...", })
@@ -31,6 +31,12 @@ function page() {
   const [nendDate, setEndDaten] = useState(new Date());
   const [my, setMy] = useState('null');
   const router = useRouter();
+
+ 
+   
+
+
+
 
   const getdata = async () => {
     try {
@@ -124,14 +130,21 @@ function page() {
 
         <div className={profile.Rightpanenl}>
           <div className={profile.UserInfo} >
-            <button className={profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? 'Logging Off' : ' Log Off '}</button>
+
+       
+
+            <button  className= {profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? 'Logging Off' : ' Log Off '}</button>
             <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter</h1>
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
           </div>
           <div className={profile.Info}>
-            
-            <div>
-              Start Date:&nbsp;   
+          
+          
+          
+           <div className="container">
+          <div className="row">
+            <div className="col-auto col-md-auto">
+               Start Date:&nbsp;   
               <DateTimePicker
                 amPmAriaLabel="Select AM/PM"
                 calendarAriaLabel="Toggle calendar"
@@ -149,6 +162,8 @@ function page() {
                 format={"dd-MM-y h:mm:s a"} />
               &nbsp;&nbsp;
 
+            </div>
+            <div className="col-auto col-md-auto ">
               End Date:&nbsp; 
               <DateTimePicker
                 amPmAriaLabel="Select AM/PM"
@@ -166,15 +181,33 @@ function page() {
                 yearAriaLabel="Year"
                 format={"dd-MM-y h:mm:s a"} />
               &nbsp;&nbsp;
-              <button onClick={fetchDataAndCreateExcel} disabled={loading}>{loading ? 'Generating Excel...' : 'Generate Excel'}</button>
             </div>
+            
+            
+            <div className="col-auto col-md-auto">
+              <button className="btn btn-secondary cfont-weight-bold" onClick={fetchDataAndCreateExcel} disabled={loading}>{loading ? 'Generating Excel...' : 'Generate Excel'}</button>
+            </div>
+          </div>
+        </div>
+           
+    
+          
+          <div className="text-center">
+Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleString()}
+</div>
 
-            <br></br>
-            Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleString()}
+           
 
-            <div className={profile1.Content}>
+    
+<div className="container">
+<div className="row justify-content-center">
+<div className="col-md-6">
 
+</div></div></div>
+
+        <div className={profile1.Content}>
               <div className={profile1.container} style={{ backgroundColor: 'rgb(182, 130, 99)' }}><div className={profile1.heading} ><Image src={humidity} className={profile.img} width={40} height={40} alt="" /> <div className={profile1.sensorName}>Humidity</div> <div className={profile1.sensorValue}>{data.Humidity}</div> <div className={profile1.sensorUnit}>%</div> </div> <LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} /></div>
+             
               <div className={profile1.container} style={{ backgroundColor: 'rgb(161, 155, 92)' }}><div className={profile1.heading} ><Image src={temperature} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>Temperature</div><div className={profile1.sensorValue}>{data.Temperature}</div><div className={profile1.sensorUnit}>&#176;C</div></div><LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} /></div>
               <div className={profile1.container} style={{ backgroundColor: 'rgb(123, 168, 105)' }}><div className={profile1.heading} ><Image src={ph} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>pH</div><div className={profile1.sensorValue}>{data.Ph}</div><div className={profile1.sensorUnit}>pH</div></div><LineGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} /></div>
               <div className={profile1.container} style={{ backgroundColor: 'rgb(166, 185, 211)' }}><div className={profile1.heading} ><Image src={H2S} className={profile.img} width={40} height={40} alt="" /><div className={profile1.sensorName}>H2S</div><div className={profile1.sensorValue}>{data.H2s}</div><div className={profile1.sensorUnit}>ppm</div></div><LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} /></div>
