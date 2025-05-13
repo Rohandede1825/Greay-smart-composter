@@ -70,7 +70,7 @@ function page() {
   useEffect(() => {
     getdata();
     getFirstGraphdata();
-    const intervalId = setInterval(getdata, 10000);
+    const intervalId = setInterval(getdata, 30000);
     return () => clearInterval(intervalId);
   }, []);
   const onLogoff = () => {
