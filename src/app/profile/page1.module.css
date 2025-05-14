@@ -17,7 +17,7 @@ margin: 5px;
     display:'inline-block';
   height: 260px;
   border: 1px solid #000000;
- 
+ border-radius: 3px;
 z-index: 3;
    background-color: white;
 }

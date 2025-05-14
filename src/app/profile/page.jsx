@@ -21,7 +21,6 @@ import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 import LineGraph from "../Cpmponents/LineGraph";
-import LineGraph1 from "../Cpmponents/LineGraph1";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function page() {
@@ -199,13 +198,13 @@ Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleStr
 
 
 <div className={profile1.Content}>
-<LineGraph1 data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} image={humidity} bg={'rgb(182, 130, 99)'}/>
-<LineGraph1 data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} image={temperature} bg={'rgb(114, 99, 182)'}/>
-<LineGraph1 data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} image={ph} bg={'rgb(177, 182, 99)'} />
-<LineGraph1 data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} image={H2S} bg={'rgb(99, 182, 134)'}/>
-<LineGraph1 data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(99, 182, 178)'}/>
-<LineGraph1 data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={H2S} bg={'rgb(159, 99, 182)'}/>
-<LineGraph1 data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'}  image={CO2} bg={'rgb(182, 99, 99)'}/>
+<LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} image={humidity} bg={'rgb(182, 130, 99)'}/>
+<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} image={temperature} bg={'rgb(114, 99, 182)'}/>
+<LineGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} image={ph} bg={'rgb(177, 182, 99)'} />
+<LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} image={H2S} bg={'rgb(99, 182, 134)'}/>
+<LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(99, 182, 178)'}/>
+<LineGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(159, 99, 182)'}/>
+<LineGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'}  image={CO2} bg={'rgb(182, 99, 99)'}/>
 </div>
           </div>
         </div>
