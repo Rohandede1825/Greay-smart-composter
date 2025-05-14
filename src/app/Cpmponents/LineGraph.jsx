@@ -1,9 +1,7 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import profile1 from '../profile/page1.module.css'
-import profile from '../profile/profile.module.css'
+import LineG from './LineGraph.module.css'
 import { Line } from 'react-chartjs-2';
-
 import Image from "next/image";
 import {
   Chart as ChartJS,
@@ -14,14 +12,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-
-
-
 import { color } from 'chart.js/helpers';
 import { preProcessFile } from "typescript";
-;
-
-
 
 ChartJS.register(
   LineElement,
@@ -30,12 +22,7 @@ ChartJS.register(
   PointElement,
   Tooltip,
   Legend,
-
-
-
-
 );
-
 
 
 const LineGraph = (props) => {
@@ -108,10 +95,6 @@ const LineGraph = (props) => {
   },);
 
 
-
-
-
-
   const options = {
     responsive: true,
     plugins: {
@@ -140,11 +123,13 @@ const LineGraph = (props) => {
 
   return (
     <>
-      <div className={profile1.container} style={{ backgroundColor: props.bg}}>
-        <div className={profile1.heading} ><Image src={props.image} className={profile.img} width={40} height={40} alt="" />
-          <div className={profile1.sensorName}>{props.Label}</div>
-          <div className={profile1.sensorValue}>{props.data} </div> {avg}
-          <div className={profile1.sensorUnit}>%</div>
+      <div  style={{ backgroundColor: props.bg }} className={LineG.container}>
+        <div className={LineG.heading} ><Image src={props.image} className={LineG.img} width={40} height={40} alt="" />
+          <div className={LineG.sensorName}>{props.Label}</div>
+          <div className={LineG.sensorValue}>{props.data} </div>
+             <div className={LineG.avgtxt}>Average  </div> 
+             <div className={LineG.avg}> {avg} </div> 
+          <div className={LineG.sensorUnit}>%</div>
         </div>
         <div style={{ backgroundColor: 'rgb(255, 255, 255)', display: 'inline-block', border: '1px, solid, black', margin: '5px' }}>
           <div style={{ position: 'relative', width: '100%', height: '150px', display: 'inline-block' }}>

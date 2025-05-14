@@ -1,0 +1,113 @@
+.container{
+margin: 5px;
+ position: relative;
+    display:'inline-block';
+  height: 260px;
+  border: 1px solid #000000;
+ border-radius: 3px;
+z-index: 3;
+ 
+}
+
+.container:hover {
+.avg{color: #ffffff;
+    animation: blink 1s infinite;}
+
+
+}
+
+
+
+
+.heading
+{height:  90px;
+padding: 0px; 
+}
+
+.img {
+  position: absolute;
+  box-sizing: border-box;
+  right: 0px;
+  margin-right: 3px;
+  margin-top: 3px;
+}
+
+.sensorName
+{
+position: absolute;
+font-size: 25px;
+font-weight: 800;
+top: 0px;
+left: 50%;
+transform: translate(-50%, 20%);
+}
+
+.sensorValue
+{
+     position: absolute;
+  font-size: 40px;
+  font-family: "HindSMerienda";
+  color: #000000;
+
+  left: 50%;
+  transform: translate(-50%, 60%);
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+}
+
+.sensorUnit
+{
+ position: absolute;
+  font-size: 28px;
+  font-weight: 800;
+  color: #000000;
+  padding: 0px;
+  top: 55px;
+  right: 3%;
+}
+
+
+.avgtxt
+{
+ position: absolute;
+  font-size: 15px;
+  font-weight: 400;
+  color:#6e1e68;
+  padding: 0px;
+  top: 0px;
+  left:  3px;
+}
+
+
+.avg
+{
+position: absolute;
+  font-size: 20px;
+  font-weight: 500;
+  color: #581953;
+  padding: 0px;
+  top: 15px;
+  left:  2px;
+     
+}
+
+ 
+
+  
+
+
+ @keyframes blink {
+            0% {
+                opacity: 1;
+                
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
