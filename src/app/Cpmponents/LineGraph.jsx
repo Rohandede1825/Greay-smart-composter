@@ -89,9 +89,9 @@ const LineGraph = (props) => {
     chartData.datasets.push(Number(props.data))
     chartData.labels.shift()
     chartData.labels.push(new Date(new Date(props.time) - 5.5 * 60 * 60 * 1000).getMinutes())
-   var sum = Number (chartData.datasets[0])+Number (chartData.datasets[1])+Number(chartData.datasets[2])+Number(chartData.datasets[3])+Number(chartData.datasets[4])+Number(chartData.datasets[5])+Number(chartData.datasets[6])+Number(chartData.datasets[7])+Number(chartData.datasets[8])+Number(chartData.datasets[9])+Number(chartData.datasets[10])+Number(chartData.datasets[11])+Number(chartData.datasets[12])+Number(chartData.datasets[13])+Number(chartData.datasets[14])
-  const average = sum / chartData.datasets.length;
- setAvg(average.toFixed(2));
+   var sum = Number (chartData.datasets[0])+ Number (chartData.datasets[1])+ Number(chartData.datasets[2])+ Number(chartData.datasets[3])+ Number(chartData.datasets[4])+ Number(chartData.datasets[5])+ Number(chartData.datasets[6])+ Number(chartData.datasets[7])+ Number(chartData.datasets[8])+ Number(chartData.datasets[9])+ Number(chartData.datasets[10])+ Number(chartData.datasets[11])+ Number(chartData.datasets[12])+ Number(chartData.datasets[13])+ Number(chartData.datasets[14])
+  const average = Number (sum / chartData.datasets.length);
+ setAvg(Number8(average.toFixed(2)));
   },);
 
 

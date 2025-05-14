@@ -74,15 +74,20 @@ function page() {
   }, []);
   const onLogoff = () => {
     setLoading1(true);
-    fetch(window.location.origin + '/api/users/logoff')
+    try
+    {fetch(window.location.origin + '/api/users/logoff')
       .then((response) => response.json())
 
       .then(() => {
         router.push('./login')
       })
       .catch((error) => {
-        // setLoading1(false);
-      });
+      
+      });}
+      catch
+      {
+setLoading1(false);
+      }
   }
 
 
@@ -133,7 +138,7 @@ function page() {
 
        
 
-            <button  className= {profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? 'Logging Off' : ' Log Off '}</button>
+            <button  className= {profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? '---' : ' Log Off '}</button>
             <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter</h1>
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
           </div>
@@ -199,7 +204,7 @@ Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleStr
 
 <div className={profile1.Content}>
 <LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} image={humidity} bg={'rgb(182, 130, 99)'}/>
-<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} image={temperature} bg={'rgb(114, 99, 182)'}/>
+<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} image={temperature} bg={'rgb(150, 137, 206)'}/>
 <LineGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} image={ph} bg={'rgb(177, 182, 99)'} />
 <LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} image={H2S} bg={'rgb(99, 182, 134)'}/>
 <LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(99, 182, 178)'}/>

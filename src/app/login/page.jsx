@@ -49,7 +49,7 @@ function page () {
             });
            
             if (response.status===202){
-                router.push('./profile')
+                router.push('./dashboard')
                 response = await response.json();
              
             }

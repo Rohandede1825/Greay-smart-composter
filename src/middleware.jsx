@@ -16,7 +16,7 @@ console.log(path)
   if (path==='/'&& token )
   { 
 
-  return NextResponse.redirect(new URL('/profile', request.nextUrl));
+  return NextResponse.redirect(new URL('/dashboard', request.nextUrl));
   
   }
 
@@ -40,7 +40,7 @@ if (!ispublicPath && !token  )
  
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: [ '/login', '/new', '/register', '/profile',  '/', '/([a-zA-Z0-9-_]+)']
+  matcher: [ '/login', '/new', '/register', '/dashboard',  '/', '/([a-zA-Z0-9-_]+)']
 }
 
 
