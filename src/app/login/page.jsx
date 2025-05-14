@@ -47,7 +47,7 @@ function page () {
               body: JSON.stringify(data)
             
             });
-            console.log(response.status)
+           
             if (response.status===202){
                 router.push('./profile')
                 response = await response.json();
@@ -90,7 +90,7 @@ function page () {
 
                 <i className="bi bi-lock"></i>  <div className={login.password}>
           <input type={show?"text":"password"}   id='3' autoComplete='off' name="password" placeholder="Type your Password" onChange={(e) => onchangevalue(e)}/> 
-         <div>
+         <div className={login.passwordimagediv}>
           {show? <Image className={login.passwordimage} onClick={()=> (handleShow())}src={sw} width={30} height={30}  alt="GFG logo imported from public directory"  />:<Image className={login.passwordimage}onClick={()=> (handleShow())}src={hide} width={30} height={30}  alt="GFG logo imported from public directory"  />} 
           </div>
       </div>
@@ -127,52 +127,3 @@ export default page;
 
 
 
-
-/* 
-
-'use client'
-import React from 'react';
-import login from './login.module.css'
-
-
-
-import "bootstrap-icons/font/bootstrap-icons.css"
-
-function page(props) {
- const onchangevalue = (e) => {
-    console.log(e.target.id)
-    console.log(e.target.value)
-    console.log(e.target.name)
-    console.log(e.target.placeholder)
-    console.log(e.target.type)
- }
-
-    return (
-        <>
-        <div className={login.background}>
-         <h2 style={{ textAlign: 'center' }}>Login</h2> 
-
-         <div className={login.nameText}> User name </div>
-        <br></br>
-         <i className="bi bi-person"></i>  <span></span>
-         <input  className= {login.userInput } type="text" placeholder="Enter your username"  id='1'  autoComplete="off" name="name" onChange={(e) => onchangevalue(e)} />
-         <br></br>
-         <br></br>
-         <div className={login.nameText}>Password </div>
-         <br></br>
-         <i className="bi bi-lock"></i>  
-         <input  className= {login.userInput } type="text" placeholder="Enter your username" id='2'  autoComplete="off" name="name" onChange={(e) => onchangevalue(e)} />
-         <br></br>
-         <br></br>
-         <button className={login.button} onClick={(e) => (onregister(e))}>&nbsp; Register &nbsp;</button> 
-
-         </div>
-        
-    
-        </>
-    );
-}
-
-export default page;
-
-*/
