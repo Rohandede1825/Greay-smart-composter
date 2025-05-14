@@ -39,7 +39,7 @@ font-size: 25px;
 font-weight: 800;
 top: 0px;
 left: 50%;
-transform: translate(-50%, 20%);
+transform: translate(-50%, 0%);
 }
 
 .sensorValue
