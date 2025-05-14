@@ -11,7 +11,13 @@ z-index: 3;
 
 .container:hover {
 .avg{color: #ffffff;
-    animation: blink 1s infinite;}
+   /* animation: blink 1s infinite;*/
+  }
+.sensorValue
+{
+  
+  animation: blink 1s infinite;
+}
 
 
 }
@@ -104,10 +110,12 @@ position: absolute;
             }
 
             50% {
-                opacity: 0.5;
+            
+               color: #615a5a;
             }
 
             100% {
                 opacity: 1;
+            
             }
         }
