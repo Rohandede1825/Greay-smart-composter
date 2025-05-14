@@ -21,6 +21,8 @@ import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 import LineGraph from "../Cpmponents/LineGraph";
+import PiChart from "../Cpmponents/PiChart";
+import BarGraph from "../Cpmponents/BarGraph";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function page() {
@@ -214,9 +216,9 @@ Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleStr
           </div>
         </div>
       </div>
-
-
-
+      <h1>Under developement</h1>
+<PiChart></PiChart>
+<BarGraph></BarGraph>
     </>
   );
 }
