@@ -15,6 +15,7 @@ import H2S from '../../../public/Image/H2S.png';
 import CO2 from '../../../public/Image/CO2.png';
 import NH3 from '../../../public/Image/NH3.png'
 import CH4 from '../../../public/Image/CH4.png';
+import Earth from '../../../public/Image/Earth.png';
 import { useRouter } from 'next/navigation';
 import DateTimePicker from 'react-datetime-picker'
 import 'react-datetime-picker/dist/DateTimePicker.css';
@@ -34,8 +35,8 @@ function page() {
   const [my, setMy] = useState('null');
   const router = useRouter();
 
- 
-   
+
+
 
 
 
@@ -76,20 +77,20 @@ function page() {
   }, []);
   const onLogoff = () => {
     setLoading1(true);
-    try
-    {fetch(window.location.origin + '/api/users/logoff')
+    try {
+      fetch(window.location.origin + '/api/users/logoff')
       .then((response) => response.json())
 
       .then(() => {
         router.push('./login')
       })
       .catch((error) => {
-      
-      });}
-      catch
-      {
-setLoading1(false);
-      }
+
+      });
+    }
+    catch {
+      setLoading1(false);
+    }
   }
 
 
@@ -136,88 +137,114 @@ setLoading1(false);
       <div className={profile.bg}>
 
         <div className={profile.Rightpanenl}>
-          <div className={profile.UserInfo} >
+         
+         
+ <div className={profile.UserInfo} >
+          
+          
+  <div className="container row" >
+   <div className="row" >
+  <div className="col" >
 
-       
+<Image src={Earth} width={100} height={100} alt=""  style={{ boxSizing:'border-box', position: 'relative',  display: 'inline-block', left:'50%', transform: 'translate(-50%, 0%)' }}   />
 
-            <button  className= {profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? '---' : ' Log Off '}</button>
+    </div>
+   
+    <div className="col-md-auto " >
+ 
+            <button className={profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? '---' : ' Log Off '}</button>
             <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter</h1>
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
-          </div>
-          <div className={profile.Info}>
           
-          
-          
-           <div className="container">
-          <div className="row">
-            <div className="col-auto col-md-auto">
-               Start Date:&nbsp;   
-              <DateTimePicker
-                amPmAriaLabel="Select AM/PM"
-                calendarAriaLabel="Toggle calendar"
-                clearAriaLabel="Clear value"
-                dayAriaLabel="Day"
-                hourAriaLabel="Hour"
-                maxDetail="second"
-                minuteAriaLabel="Minute"
-                monthAriaLabel="Month"
-                nativeInputAriaLabel="Date and time"
-                onChange={setStartDaten}
-                secondAriaLabel="Second"
-                value={nstartDate}
-                yearAriaLabel="Year"
-                format={"dd-MM-y h:mm:s a"} />
-              &nbsp;&nbsp;
+    </div>
+   
+    </div>
 
-            </div>
-            <div className="col-auto col-md-auto ">
-              End Date:&nbsp; 
-              <DateTimePicker
-                amPmAriaLabel="Select AM/PM"
-                calendarAriaLabel="Toggle calendar"
-                clearAriaLabel="Clear value"
-                dayAriaLabel="Day"
-                hourAriaLabel="Hour"
-                maxDetail="second"
-                minuteAriaLabel="Minute"
-                monthAriaLabel="Month"
-                nativeInputAriaLabel="Date and time"
-                onChange={setEndDaten}
-                secondAriaLabel="Second"
-                value={nendDate}
-                yearAriaLabel="Year"
-                format={"dd-MM-y h:mm:s a"} />
-              &nbsp;&nbsp;
-            </div>
-            
-            
-            <div className="col-auto col-md-auto">
-              <button className="btn btn-secondary cfont-weight-bold" onClick={fetchDataAndCreateExcel} disabled={loading}>{loading ? 'Generating Excel...' : 'Generate Excel'}</button>
-            </div>
-          </div>
-        </div>
-           
-    
-          
-          <div className="text-center">
-Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleString()}
-</div> 
-
-
-<div className={profile1.Content}>
-<LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} image={humidity} bg={'rgb(182, 130, 99)'}/>
-<BarGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} image={temperature} bg={'rgb(150, 137, 206)'}/>
-<PiChart data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} image={ph} bg={'rgb(177, 182, 99)'} />
-<LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} image={H2S} bg={'rgb(99, 182, 134)'}/>
-<LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(99, 182, 178)'}/>
-<LineGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(159, 99, 182)'}/>
-<BarGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'}  image={CO2} bg={'rgb(182, 99, 99)'}/>
 </div>
+
+
+
+         
+          </div>
+
+
+          
+
+
+          <div className={profile.Info}>
+
+
+
+            <div className="container">
+              <div className="row">
+                <div className="col-auto col-md-auto">
+                  Start Date:&nbsp;
+                  <DateTimePicker
+                    amPmAriaLabel="Select AM/PM"
+                    calendarAriaLabel="Toggle calendar"
+                    clearAriaLabel="Clear value"
+                    dayAriaLabel="Day"
+                    hourAriaLabel="Hour"
+                    maxDetail="second"
+                    minuteAriaLabel="Minute"
+                    monthAriaLabel="Month"
+                    nativeInputAriaLabel="Date and time"
+                    onChange={setStartDaten}
+                    secondAriaLabel="Second"
+                    value={nstartDate}
+                    yearAriaLabel="Year"
+                    format={"dd-MM-y h:mm:s a"} />
+                  &nbsp;&nbsp;
+
+                </div>
+                <div className="col-auto col-md-auto ">
+                  End Date:&nbsp;
+                  <DateTimePicker
+                    amPmAriaLabel="Select AM/PM"
+                    calendarAriaLabel="Toggle calendar"
+                    clearAriaLabel="Clear value"
+                    dayAriaLabel="Day"
+                    hourAriaLabel="Hour"
+                    maxDetail="second"
+                    minuteAriaLabel="Minute"
+                    monthAriaLabel="Month"
+                    nativeInputAriaLabel="Date and time"
+                    onChange={setEndDaten}
+                    secondAriaLabel="Second"
+                    value={nendDate}
+                    yearAriaLabel="Year"
+                    format={"dd-MM-y h:mm:s a"} />
+                  &nbsp;&nbsp;
+                </div>
+
+
+                <div className="col-auto col-md-auto">
+                  <button className="btn btn-secondary cfont-weight-bold" onClick={fetchDataAndCreateExcel} disabled={loading}>{loading ? 'Generating Excel...' : 'Generate Excel'}</button>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div className="text-center">
+              Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleString()}
+            </div>
+
+
+            <div className={profile1.Content}>
+              <LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} image={humidity} bg={'rgb(182, 130, 99)'} />
+              <BarGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} image={temperature} bg={'rgb(150, 137, 206)'} />
+              <PiChart data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} image={ph} bg={'rgb(177, 182, 99)'} />
+              <LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} image={H2S} bg={'rgb(99, 182, 134)'} />
+              <LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(99, 182, 178)'} />
+              <LineGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(159, 99, 182)'} />
+              <BarGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(182, 99, 99)'} />
+            </div>
 
           </div>
         </div>
       </div>
-      
+
 
 
     </>
@@ -225,3 +252,7 @@ Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleStr
 }
 export default page;
 
+/*
+style={{ boxSizing:'border-box', position: 'relative',  display: 'inline-block', left:'50%', transform: 'translate(-50%, 0%)' }} 
+  
+*/
