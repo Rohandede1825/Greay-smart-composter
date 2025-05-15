@@ -23,15 +23,43 @@
   flex: 87%;
 }
 
-
-
-.UserInfo {
-  background-color: #ffffff;
+.UserInfomain
+{
+background-color: #ffffff;
   border: 1px solid #000000;
   padding: 0px;
- background-color: #f1dede;
 
 }
+
+.UserInfo {
+
+
+  padding: 0px;
+
+display: flex;
+ flex-direction: row;
+
+}
+
+.UserInfo_1 {
+
+}
+.UserInfo_2 {
+flex-grow: 1;
+text-align: center;
+}
+
+.UserInfo_3 {
+ 
+display: block;
+}
+
+@media (max-width: 800px) {
+  .UserInfos {
+    flex-direction: column;
+  }
+}
+
 
 .Info {
   margin-top: 5px;
@@ -166,18 +194,19 @@ bottom: 15px;
 
 .logoff {
   position: relative;
-  height: 30px;
+ top:-31px;
+  height: 28px;
   width: 70px;
-  border-radius: 40px;
+  border-radius: 5px;
   float: right;
-  top: 50%;
+  
 
   text-align: center;
   transform: translate(-10px, 0%);
-  top: 10px;
+
 
   border: 1px solid #000000;
-  background-color: #d1cdcd;
+  background-color: #eceaea;
   color: #000000;
 
 

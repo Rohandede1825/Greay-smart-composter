@@ -132,30 +132,22 @@ function page() {
 
         <div className={profile.Rightpanenl}>
          
-         
+         <div className={profile.UserInfomain}>
+
  <div className={profile.UserInfo} >
-          
-          
-  <div className="container row" >
-   <div className="row" >
-  <div className="col" >
-
-<Image src={Earth} width={100} height={100} alt=""  style={{ boxSizing:'border-box', position: 'relative',  display: 'inline-block', left:'50%', transform: 'translate(-50%, 0%)' }}   />
-
-    </div>
-   
-    <div className="col-md-auto " >
- 
-            <button className={profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? '---' : ' Log Off '}</button>
-            <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter</h1>
-            <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
-          
-    </div>
-   
-    </div>
+<Image src={Earth} width={100} height={100} alt=""  className={profile.UserInfo_1}  />
+    <div className={profile.UserInfo_2}  >
+           
+            <h1 style={{ color: "blue", textAlign: 'center', position:'relative', right: '50px' }}>Greya Smart Composter</h1>
+            
 
 </div>
+</div>
+ <div className={profile.UserInfo_3}  >
 
+<h4 style={{ textAlign: 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
+ <button className={profile.logoff} onClick={(e) => (onLogoff(e))} disabled={loading1}>{loading1 ? '---' : ' Log Off '}</button>
+ </div>
 
 
          
