@@ -93,7 +93,6 @@ function page() {
     }
   }
 
-
   ////////////////////////////////////////////////////////////////////////////////////////////
   const fetchDataAndCreateExcel = async () => {
     setLoading(true);
@@ -124,11 +123,6 @@ function page() {
       setLoading(false);
     }
   };
-
-
-
-
-
 
 
   return (
