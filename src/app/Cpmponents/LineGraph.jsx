@@ -3,27 +3,11 @@ import React, { useState, useEffect } from "react";
 import LineG from './LineGraph.module.css'
 import { Line } from 'react-chartjs-2';
 import Image from "next/image";
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale,PointElement, Tooltip, Legend,} from 'chart.js';
 import { color } from 'chart.js/helpers';
 import { preProcessFile } from "typescript";
 
-ChartJS.register(
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Tooltip,
-  Legend,
-);
-
+ChartJS.register( LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend,);
 
 const LineGraph = (props) => {
 
@@ -43,12 +27,30 @@ const LineGraph = (props) => {
         data: chartData.datasets,
         borderColor: props.bg,
         backgroundColor: 'rgb(226, 218, 218)',
+       
         tension: 0,
         pointRadius: 3,
         pointHoverRadius: 7,
         fill: true,
         borderWidth: 2,
         pointColor: 'rgb(177, 182, 99)',
+
+          backgroundColor: [
+                    'rgba(133, 1, 1, 0.2)',
+                    'rgba(3, 51, 83, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                    'rgb(230, 141, 160)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                ],
 
       },
     ],

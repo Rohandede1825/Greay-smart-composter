@@ -206,19 +206,20 @@ Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleStr
 
 <div className={profile1.Content}>
 <LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} image={humidity} bg={'rgb(182, 130, 99)'}/>
-<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} image={temperature} bg={'rgb(150, 137, 206)'}/>
-<LineGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} image={ph} bg={'rgb(177, 182, 99)'} />
+<BarGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} image={temperature} bg={'rgb(150, 137, 206)'}/>
+<PiChart data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} image={ph} bg={'rgb(177, 182, 99)'} />
 <LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} image={H2S} bg={'rgb(99, 182, 134)'}/>
 <LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(99, 182, 178)'}/>
 <LineGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(159, 99, 182)'}/>
-<LineGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'}  image={CO2} bg={'rgb(182, 99, 99)'}/>
+<BarGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'}  image={CO2} bg={'rgb(182, 99, 99)'}/>
 </div>
+
           </div>
         </div>
       </div>
-      <h1>Under developement</h1>
-<PiChart></PiChart>
-<BarGraph></BarGraph>
+      
+
+
     </>
   );
 }

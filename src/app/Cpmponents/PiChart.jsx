@@ -1,25 +1,37 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { Pie } from 'react-chartjs-2';
-import {
+//import { Chart as ChartJS, ArcElement, Tooltip, Legend,} from 'chart.js';
+import { Chart as ChartJS,ArcElement, LineElement, CategoryScale, LinearScale,PointElement, Tooltip, Legend,} from 'chart.js';
+import LineG from './LineGraph.module.css'
+import Image from "next/image";
+ChartJS.register( LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend,);
 
 
 
-    Chart as ChartJS,
-    ArcElement,
-    Tooltip,
-    Legend,
-} from 'chart.js';
+
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieChart = () => {
+const PieChart = (props) => {
+  const [chartData, setChartData] = useState({
+      labels: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+      datasets: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    });
+    const [graphtime, setGraphTime] = useState(null)
+    const [repeat, setRepeat] = useState(false)
+    const [graphdata, setGraphData] = useState(1)
+    const [avg, setAvg]=useState(0)
+  
+  
+  
     const data = {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: chartData.labels,
         datasets: [
             {
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: props.Label,
+                data:chartData.datasets,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -41,7 +53,91 @@ const PieChart = () => {
         ],
     };
 
-    return <Pie data={data} />;
-};
+const options = {
+    responsive: false,
+    plugins: {
+
+      customCanvasBackgroundColor: {
+        color: 'red',
+      },
+
+      legend: {
+        backgroundColor: "red",
+        position: 'bottom',
+        color: 'red',
+        labels: {
+          font: {
+            size: 14,
+            family: 'Arial',
+            weight: 'bold',
+          },
+        },
+      },
+      legend: false,
+    },
+  };
+
+ useEffect(() => {
+    if (props.priviousData != null || props.priviousData != undefined) {
+
+      if (props.priviousData.length > 5) {
+        if (repeat !== true) {
+          props.priviousData.map((data, index) => {
+            if (index < 15) {
+              chartData.datasets[index] = data[props.mykey]
+              chartData.labels[index] = new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).getMinutes()
+            }
+          })
+          setGraphData(props.priviousData[0]._id)
+          setRepeat(true)
+        }
+        setGraphData(props.priviousData[0]._id)
+        setRepeat(true)
+      }
+    }
+  },);
+
+  useEffect(() => {
+    if (props.data === "...") {
+      return
+    }
+    if (props.time === graphtime) {
+      return
+    }
+    setGraphTime(props.time)
+    chartData.datasets.shift()
+    chartData.datasets.push(Number(props.data))
+    chartData.labels.shift()
+    chartData.labels.push(new Date(new Date(props.time) - 5.5 * 60 * 60 * 1000).getMinutes())
+   var sum = Number (chartData.datasets[0])+ Number (chartData.datasets[1])+ Number(chartData.datasets[2])+ Number(chartData.datasets[3])+ Number(chartData.datasets[4])+ Number(chartData.datasets[5])+ Number(chartData.datasets[6])+ Number(chartData.datasets[7])+ Number(chartData.datasets[8])+ Number(chartData.datasets[9])+ Number(chartData.datasets[10])+ Number(chartData.datasets[11])+ Number(chartData.datasets[12])+ Number(chartData.datasets[13])+ Number(chartData.datasets[14])
+  const average = Number (sum / chartData.datasets.length);
+ setAvg(Number(average.toFixed(2)));
+  },);
+
+
+
+
+
+    return (
+    <>
+<div  style={{ backgroundColor: props.bg }} className={LineG.container}>
+        <div className={LineG.heading} ><Image src={props.image} className={LineG.img} width={40} height={40} alt="" />
+          <div className={LineG.sensorName}>{props.Label}</div>
+          <div className={LineG.sensorValue}>{props.data} </div>
+             <div className={LineG.avgtxt}>Average  </div> 
+             <div className={LineG.avg}> {avg} </div> 
+          <div className={LineG.sensorUnit}>%</div>
+        </div>
+        <div style={{ backgroundColor: 'rgb(255, 255, 255)', display: 'inline-block', border: '1px, solid, black', margin: '5px' }}>
+          <div style={{ position: 'relative', width: '100%', height: '150px', display: 'inline-block', top:'50%', transform: 'translate(0%, 4px)' }}>
+            <Pie data={data} options={options} />
+          </div>
+        </div>
+      </div>
+
+
+   
+</>
+);};
 
 export default PieChart;

@@ -1,11 +1,11 @@
 'use client';
 
+import React, { useState, useEffect } from "react";
+import LineG from './LineGraph.module.css'
+import Image from "next/image";
 
-
-import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
-
 // Import necessary libraries
     Chart as ChartJS,
     CategoryScale,
@@ -15,20 +15,48 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const BarGraph = () => {
+const BarGraph = (props) => {
+    const [chartData, setChartData] = useState({
+       labels: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+       datasets: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+     });
+   
+     const [graphtime, setGraphTime] = useState(null)
+     const [repeat, setRepeat] = useState(false)
+     const [graphdata, setGraphData] = useState(1)
+     const [avg, setAvg]=useState(0)
+   
+   
     // Data for the bar graph
     const data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        labels: chartData.labels,
         datasets: [
             {
-                label: 'Sales',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                label:  props.Label,
+                data: chartData.datasets,
+               borderColor: props.bg,
+             
+               backgroundColor: [
+                    'rgba(133, 1, 1, 0.2)',
+                    'rgba(3, 51, 83, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                ],
+              
+              
                 borderWidth: 1,
             },
         ],
@@ -41,14 +69,88 @@ const BarGraph = () => {
             legend: {
                 position: 'top',
             },
+            legend: false,
             title: {
-                display: true,
+                display: false,
                 text: 'Monthly Sales Data',
             },
         },
     };
 
-    return <Bar data={data} options={options} />;
+
+ useEffect(() => {
+    if (props.priviousData != null || props.priviousData != undefined) {
+
+      if (props.priviousData.length > 5) {
+        if (repeat !== true) {
+          props.priviousData.map((data, index) => {
+            if (index < 15) {
+              chartData.datasets[index] = data[props.mykey]
+              chartData.labels[index] = new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).getMinutes()
+            }
+          })
+          setGraphData(props.priviousData[0]._id)
+          setRepeat(true)
+        }
+        setGraphData(props.priviousData[0]._id)
+        setRepeat(true)
+      }
+    }
+  },);
+
+  useEffect(() => {
+    if (props.data === "...") {
+      return
+    }
+    if (props.time === graphtime) {
+      return
+    }
+    setGraphTime(props.time)
+    chartData.datasets.shift()
+    chartData.datasets.push(Number(props.data))
+    chartData.labels.shift()
+    chartData.labels.push(new Date(new Date(props.time) - 5.5 * 60 * 60 * 1000).getMinutes())
+   var sum = Number (chartData.datasets[0])+ Number (chartData.datasets[1])+ Number(chartData.datasets[2])+ Number(chartData.datasets[3])+ Number(chartData.datasets[4])+ Number(chartData.datasets[5])+ Number(chartData.datasets[6])+ Number(chartData.datasets[7])+ Number(chartData.datasets[8])+ Number(chartData.datasets[9])+ Number(chartData.datasets[10])+ Number(chartData.datasets[11])+ Number(chartData.datasets[12])+ Number(chartData.datasets[13])+ Number(chartData.datasets[14])
+  const average = Number (sum / chartData.datasets.length);
+ setAvg(Number(average.toFixed(2)));
+  },);
+
+
+
+
+
+
+
+
+
+    return (
+   <>
+
+ <div  style={{ backgroundColor: props.bg }} className={LineG.container}>
+        <div className={LineG.heading} ><Image src={props.image} className={LineG.img} width={40} height={40} alt="" />
+          <div className={LineG.sensorName}>{props.Label}</div>
+          <div className={LineG.sensorValue}>{props.data} </div>
+             <div className={LineG.avgtxt}>Average  </div> 
+             <div className={LineG.avg}> {avg} </div> 
+          <div className={LineG.sensorUnit}>%</div>
+        </div>
+        <div style={{ backgroundColor: 'rgb(255, 255, 255)', display: 'inline-block', border: '1px, solid, black', margin: '5px' }}>
+          <div style={{ position: 'relative', width: '100%', height: '150px', display: 'inline-block' }}>
+           
+              <Bar data={data} options={options} />
+          </div>
+        </div>
+      </div>
+
+
+   </>
+   
+
+
+
+      
+
+);
 };
 
 export default BarGraph;
