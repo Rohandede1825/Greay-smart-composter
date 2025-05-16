@@ -138,7 +138,7 @@ function page() {
 <Image src={Earth} width={100} height={100} alt=""  className={profile.UserInfo_1}  />
     <div className={profile.UserInfo_2}  >
            
-            <h1 style={{ color: "blue", textAlign: 'center', position:'relative',top:'50%', transform: 'translate(0%, -50% )' ,right: '50px' }}>Greya Smart Composter</h1>
+            <h1 style={{ color: "rgb(115, 177, 15)",  fontSize:' 50px', fontWeight: '1000', textAlign: 'center', position:'relative',top:'50%', transform: 'translate(0%, -50% )' ,right: '50px' }}>Greya Smart Composter</h1>
             
 
 </div>
