@@ -1,9 +1,8 @@
-;
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import  "bootstrap/dist/css/bootstrap.min.css"
-
-
+import {Providers}from './redux/providers'
 
 import "./globals.css";
 
@@ -41,7 +40,9 @@ export default function RootLayout({
 </head>
       
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+       <Providers> {children}</Providers>
+       
+      
       </body>
     </html>
   );

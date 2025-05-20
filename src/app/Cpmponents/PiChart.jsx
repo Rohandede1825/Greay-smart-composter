@@ -1,20 +1,30 @@
 'use client';
 import React, { useState, useEffect } from "react";
 import { Pie } from 'react-chartjs-2';
-//import { Chart as ChartJS, ArcElement, Tooltip, Legend,} from 'chart.js';
 import { Chart as ChartJS,ArcElement, LineElement, CategoryScale, LinearScale,PointElement, Tooltip, Legend,} from 'chart.js';
 import LineG from './LineGraph.module.css'
 import Image from "next/image";
+import change from '../../../public/Image/change.png'
 ChartJS.register( LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend,);
-
-
-
-
-
-
+import { addUser, updateUser } from '../redux/slice'
+import { useDispatch, useSelector } from 'react-redux'
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = (props) => {
+
+const dispatch = useDispatch();
+ const reduxData = useSelector((state) => state.userData.users);
+ const userDispatch = () => {
+ var id = props.id
+ var name = reduxData[0].name
+ name ={...name, [props.mykey]: "line"}
+ var name =[{id, name} ]
+ console.log(name)
+ dispatch(updateUser([props.id, name]))
+ }
+
+
+
   const [chartData, setChartData] = useState({
       labels: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
       datasets: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -23,9 +33,12 @@ const PieChart = (props) => {
     const [repeat, setRepeat] = useState(false)
     const [graphdata, setGraphData] = useState(1)
     const [avg, setAvg]=useState(0)
+   
   
-  
-  
+
+
+
+
     const data = {
         labels: chartData.labels,
         datasets: [
@@ -78,6 +91,11 @@ const options = {
   };
 
  useEffect(() => {
+
+
+
+
+
     if (props.priviousData != null || props.priviousData != undefined) {
 
       if (props.priviousData.length > 5) {
@@ -93,6 +111,7 @@ const options = {
         }
         setGraphData(props.priviousData[0]._id)
         setRepeat(true)
+      
       }
     }
   },);
@@ -122,6 +141,9 @@ const options = {
     <>
 <div  style={{ backgroundColor: props.bg }} className={LineG.container}>
         <div className={LineG.heading} ><Image src={props.image} className={LineG.img} width={40} height={40} alt="" />
+          <div className={LineG.btncontainer}> <button  onClick={() => (userDispatch())}></button>
+         </div>  
+       
           <div className={LineG.sensorName}>{props.Label}</div>
           <div className={LineG.sensorValue}>{props.data} </div>
              <div className={LineG.avgtxt}>Average  </div> 
@@ -133,9 +155,8 @@ const options = {
             <Pie data={data} options={options} />
           </div>
         </div>
+    
       </div>
-
-
    
 </>
 );};

@@ -22,6 +22,28 @@ z-index: 3;
 
 }
 
+.btncontainer{
+ 
+  position: absolute;
+    display:'inline-block';
+    top: 50px;
+    left: 5px;
+}
+
+.btncontainer > button{
+  background-color: #ee0c62;
+width: auto;
+height: auto;
+border: none;
+
+width: 50px;
+height: 25px;
+
+clip-path: polygon(40% 50%, 0% 00%, 00% 100%);
+}
+
+
+
 
 
 
@@ -97,10 +119,6 @@ position: absolute;
   left:  2px;
      
 }
-
- 
-
-  
 
 
  @keyframes blink {

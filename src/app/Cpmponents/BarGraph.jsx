@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import LineG from './LineGraph.module.css'
 import Image from "next/image";
-
+import change from '../../../public/Image/change.png'
 import { Bar } from 'react-chartjs-2';
 import {
 // Import necessary libraries
@@ -18,8 +18,32 @@ import {
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+import {  updateUser } from '../redux/slice'
+import { useDispatch, useSelector } from 'react-redux'
+
+
 const BarGraph = (props) => {
-    const [chartData, setChartData] = useState({
+
+const dispatch = useDispatch();
+ const reduxData = useSelector((state) => state.userData.users);
+
+const userDispatch = () => {
+var id = props.id
+var name = reduxData[0].name
+name ={...name, [props.mykey]: "pi"}
+var name =[{id, name} ]
+console.log('in bar')
+console.log(name)
+dispatch(updateUser([props.id, name]))
+}
+ 
+  
+ 
+  
+  
+  
+  
+  const [chartData, setChartData] = useState({
        labels: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
        datasets: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
      });
@@ -127,7 +151,8 @@ const BarGraph = (props) => {
    <>
 
  <div  style={{ backgroundColor: props.bg }} className={LineG.container}>
-        <div className={LineG.heading} ><Image src={props.image} className={LineG.img} width={40} height={40} alt="" />
+        <div className={LineG.heading} ><Image  src={props.image} className={LineG.img} width={40} height={40} alt="" />
+          <div className={LineG.btncontainer}>  <button  onClick={() => (userDispatch())}></button>   </div>
           <div className={LineG.sensorName}>{props.Label}</div>
           <div className={LineG.sensorValue}>{props.data} </div>
              <div className={LineG.avgtxt}>Average  </div> 
@@ -154,3 +179,5 @@ const BarGraph = (props) => {
 };
 
 export default BarGraph;
+
+//
