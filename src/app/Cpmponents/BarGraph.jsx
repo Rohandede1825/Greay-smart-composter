@@ -32,8 +32,8 @@ var id = props.id
 var name = reduxData[0].name
 name ={...name, [props.mykey]: "pi"}
 var name =[{id, name} ]
-console.log('in bar')
-console.log(name)
+//console.log('in bar')
+//console.log(name)
 dispatch(updateUser([props.id, name]))
 }
  

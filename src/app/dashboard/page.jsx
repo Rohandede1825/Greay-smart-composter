@@ -50,7 +50,7 @@ useEffect(() => {
   
   useEffect(() => {
    if (reduxData.length>0)
-   { console.log(reduxData)
+   {// console.log(reduxData)
    // console.log(reduxData[0].id)
     //console.log(reduxData[0].name)
     setRtkid(reduxData[0].id)
@@ -321,7 +321,6 @@ const router = useRouter();
 
 
 
-{graphselect.Humidity}
 
 
     </>

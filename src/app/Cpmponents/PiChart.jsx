@@ -19,7 +19,7 @@ const dispatch = useDispatch();
  var name = reduxData[0].name
  name ={...name, [props.mykey]: "line"}
  var name =[{id, name} ]
- console.log(name)
+ //console.log(name)
  dispatch(updateUser([props.id, name]))
  }
 

@@ -53,7 +53,7 @@ updateUser: (state, action) => {
     },
 
     getReduxData: (state, action) => {
-    console.log(initialState.users)
+   // console.log(initialState.users)
 
     },
 
