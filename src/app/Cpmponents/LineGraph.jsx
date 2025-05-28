@@ -151,7 +151,7 @@ dispatch(updateUser([props.id, name]))
           <div className={LineG.sensorValue}>{props.data} </div>
              <div className={LineG.avgtxt}>Average  </div> 
              <div className={LineG.avg}> {avg} </div> 
-          <div className={LineG.sensorUnit}>%</div>
+          <div className={LineG.sensorUnit}>{props.unit}</div>
         </div>
         <div style={{ backgroundColor: 'rgb(255, 255, 255)', display: 'inline-block', border: '1px, solid, black', margin: '5px' }}>
           <div style={{ position: 'relative', width: '100%', height: '150px', display: 'inline-block' }}>

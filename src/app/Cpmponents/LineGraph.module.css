@@ -1,3 +1,19 @@
+
+@font-face {
+  font-family: Roboto;
+  src:url(../../../public/Font/static/Roboto-Medium.ttf);
+  weight: 400;
+  font-style: Regular
+}
+
+
+@font-face {
+  font-family: futura;
+  src:url(../../../public/Font/Roboto-VariableFont_wdth\,wght.ttf);
+
+}
+
+
 .container{
 margin: 5px;
  position: relative;
@@ -10,7 +26,7 @@ z-index: 3;
 }
 
 .container:hover {
-.avg{color: #ffffff;
+.avg {font-size: 21px;
    /* animation: blink 1s infinite;*/
   }
 .sensorValue
@@ -31,15 +47,15 @@ z-index: 3;
 }
 
 .btncontainer > button{
-  background-color: #ee0c62;
+  background-color: #066b14;
 width: auto;
 height: auto;
 border: none;
-
 width: 50px;
 height: 25px;
 
 clip-path: polygon(40% 50%, 0% 00%, 00% 100%);
+
 }
 
 
@@ -60,36 +76,46 @@ padding: 0px;
   margin-top: 3px;
 }
 
+
 .sensorName
 {
 position: absolute;
 font-size: 25px;
-font-weight: 800;
 top: 0px;
 left: 50%;
 transform: translate(-50%, 0%);
+font-family: Roboto;
+color: #2f8b0b;
 }
+
+
+
+
+
+
+
+
 
 .sensorValue
 {
-     position: absolute;
+  position: absolute;
   font-size: 40px;
-  font-family: "HindSMerienda";
-  color: #000000;
-
+  color: #096d12;
+font-family: futura;
   left: 50%;
   transform: translate(-50%, 60%);
   display: inline-block;
   padding: 0px;
   margin: 0px;
+ 
 }
 
 .sensorUnit
 {
  position: absolute;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 800;
-  color: #000000;
+  color: #08642b;
   padding: 0px;
   top: 55px;
   right: 3%;
@@ -101,7 +127,7 @@ transform: translate(-50%, 0%);
  position: absolute;
   font-size: 15px;
   font-weight: 400;
-  color:#6e1e68;
+  color:#2da733;
   padding: 0px;
   top: 0px;
   left:  3px;
@@ -113,7 +139,7 @@ transform: translate(-50%, 0%);
 position: absolute;
   font-size: 20px;
   font-weight: 500;
-  color: #581953;
+  color:#08740e;
   padding: 0px;
   top: 15px;
   left:  2px;
@@ -128,8 +154,8 @@ position: absolute;
             }
 
             50% {
-            
-               color: #615a5a;
+            font-family: Roboto;
+               
             }
 
             100% {

@@ -259,55 +259,55 @@ const router = useRouter();
             <div className={profile1.Content}>
              
               {
- graphselect.Humidity=="line"?(<LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(182, 130, 99)'}/>)
-:graphselect.Humidity=="bar"?(<BarGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(182, 130, 99)'}/>)
-:graphselect.Humidity=="pi"?(<PiChart data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(182, 130, 99)'}/>) 
+ graphselect.Humidity=="line"?(<LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(255, 255, 255)'} unit={"%"}/>)
+:graphselect.Humidity=="bar"?(<BarGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(255, 255, 255)'} unit={"%"}/>)
+:graphselect.Humidity=="pi"?(<PiChart data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(255, 255, 255)'}unit={"%"}/>) 
 :<>nfnfn</>
 }  
 
 
                 {
- graphselect.Temperature=="line"?(<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(150, 137, 206)'} />)
-:graphselect.Temperature=="bar"?(<BarGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(150, 137, 206)'}/>)
-:graphselect.Temperature=="pi"?(<PiChart data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(150, 137, 206)'}/>) 
+ graphselect.Temperature=="line"?(<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'} unit={"C"}/>)
+:graphselect.Temperature=="bar"?(<BarGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'}unit={"C"}/>)
+:graphselect.Temperature=="pi"?(<PiChart data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'}unit={"C"}/>) 
 :<>nfnfn</>
 }         
 
 {
- graphselect.Ph=="line"?(<LineGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(177, 182, 99)'} />)
-:graphselect.Ph=="bar"?(<BarGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(177, 182, 99)'} />)
-:graphselect.Ph=="pi"?(<PiChart data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(177, 182, 99)'} />) 
+ graphselect.Ph=="line"?(<LineGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(255, 255, 255)'} unit={"pH"}/>)
+:graphselect.Ph=="bar"?(<BarGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(255, 255, 255)'} unit={"pH"}/>)
+:graphselect.Ph=="pi"?(<PiChart data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(255, 255, 255)'} unit={"pH"}/>) 
 :<>nfnfn</>
 }    
 
 
 {
-  graphselect.H2s=="line"?( <LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(99, 182, 134)'} />)
-:graphselect.H2s=="bar"?(<BarGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(99, 182, 134)'} />)
-:graphselect.H2s=="pi"?(<PiChart data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(99, 182, 134)'} />) 
+  graphselect.H2s=="line"?( <LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>)
+:graphselect.H2s=="bar"?(<BarGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>)
+:graphselect.H2s=="pi"?(<PiChart data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>) 
 :<>nfnfn</>
 }
 
   {
 
- graphselect.Ammonia=="line"?( <LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'}  image={NH3} bg={'rgb(99, 182, 178)'} />)
-:graphselect.Ammonia=="bar"?(<BarGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'}  image={NH3} bg={'rgb(99, 182, 178)'} />)
-:graphselect.Ammonia=="pi"?(<PiChart data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'}  image={NH3} bg={'rgb(99, 182, 178)'} />) 
+ graphselect.Ammonia=="line"?( <LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'}  image={NH3} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>)
+:graphselect.Ammonia=="bar"?(<BarGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'}  image={NH3} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>)
+:graphselect.Ammonia=="pi"?(<PiChart data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'}  image={NH3} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>) 
 :<>nfnfn</>
 }         
 
 
 {
- graphselect.Methane=="line"?( <LineGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(159, 99, 182)'} />)
-:graphselect.Methane=="bar"?(<BarGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(159, 99, 182)'} />)
-:graphselect.Methane=="pi"?(<PiChart data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(159, 99, 182)'} />) 
+ graphselect.Methane=="line"?( <LineGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>)
+:graphselect.Methane=="bar"?(<BarGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>)
+:graphselect.Methane=="pi"?(<PiChart data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>) 
 :<>nfnfn</>
 }     
 
     {
- graphselect.Co2=="line"?(  <LineGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(182, 99, 99)'} />)
-:graphselect.Co2=="bar"?(  <BarGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(182, 99, 99)'} />)
-:graphselect.Co2=="pi"?(  <PiChart data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(182, 99, 99)'} />) 
+ graphselect.Co2=="line"?(  <LineGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>)
+:graphselect.Co2=="bar"?(  <BarGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>)
+:graphselect.Co2=="pi"?(  <PiChart data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(255, 255, 255)'} unit={"ppm"}/>) 
 :<>nfnfn</>
 } 
 

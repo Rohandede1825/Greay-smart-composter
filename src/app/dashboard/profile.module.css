@@ -1,9 +1,21 @@
 @font-face {
-  font-family: HindSMerienda;
-  src: url(../../../public/Font/Merienda-Medium.ttf);
-  weight: 400;
-  font-style: Mediumiliguri;
+  font-family: Roboto;
+  src: url(../../../public/Font/static/Roboto-Light.ttf);
+ 
 }
+
+.sensorName {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 100;
+  top:2px;
+  right: 50%;
+transform: translateX(50%);
+font-family: Roboto;
+ 
+}
+
+
 
 
 .bg {
@@ -82,7 +94,6 @@ display: block;
 }
 
 .Content {
-
   margin-top: 5px;
   background-color: #ffffff;
   border: 1px solid #000000;
@@ -102,18 +113,10 @@ display: block;
 
 
 
-.sensorName {
-  position: absolute;
-  font-size: 12px;
-  font-weight: 800;
-  top:2px;
-  right: 50%;
-transform: translateX(50%);
-
- 
 
 
-}
+
+
 
 .sensorValue {
   position: absolute;
