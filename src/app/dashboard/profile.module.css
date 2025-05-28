@@ -87,11 +87,13 @@ display: block;
 
 .Info {
   margin-top: 5px;
-  background-color: #f5f0e0;
+  background-color: #d1f552;
   border: 2px solid #000000;
   padding: 1px;
   padding-top: 10px;
   z-index: 4;
+  box-shadow: 0 4px 8px 0 #fdfdfb, 0 1.5px 0 0 #ffffff, 0 8px 16px 0 #b5b500;
+  background: linear-gradient(135deg, #e4e4df 0%, #dbff6c 40%, #b5b500 100%);
 }
 
 
