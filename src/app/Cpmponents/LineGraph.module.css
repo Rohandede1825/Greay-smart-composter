@@ -67,9 +67,7 @@ cursor: pointer;
 transition: transform 0.1s, box-shadow 0.1s;
 
 &:active {
-  box-shadow: 10px 10px 50px 12px lightblue;
-
-
+   background-color: #369c44;
 }
 }
 
