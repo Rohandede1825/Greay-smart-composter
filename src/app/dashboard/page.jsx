@@ -267,9 +267,9 @@ const router = useRouter();
 
 
                 {
- graphselect.Temperature=="line"?(<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'} unit={tempunit}/>)
-:graphselect.Temperature=="bar"?(<BarGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'}unit={tempunit}/>)
-:graphselect.Temperature=="pi"?(<PiChart data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'}unit={tempunit}/>) 
+ graphselect.Temperature=="line"?(<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'} unit={<>&#176;C</>}/>)
+:graphselect.Temperature=="bar"?(<BarGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'}unit={<>&#176;C</>}/>)
+:graphselect.Temperature=="pi"?(<PiChart data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'}unit={<>&#176;C</>}/>) 
 :<>nfnfn</>
 }         
 

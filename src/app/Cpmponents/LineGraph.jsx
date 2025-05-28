@@ -47,8 +47,8 @@ dispatch(updateUser([props.id, name]))
         borderColor: props.bg,
         backgroundColor: 'rgb(226, 218, 218)',
        
-        tension: 0,
-        pointRadius: 3,
+        tension: 0.3,
+        pointRadius: 1.5,
         pointHoverRadius: 7,
         fill: true,
         borderWidth: 2,
