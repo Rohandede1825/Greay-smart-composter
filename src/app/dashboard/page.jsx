@@ -157,7 +157,7 @@ function page() {
       const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
       saveAs(blob, 'Sensors_Data.xlsx');
     } catch (error) {
-      console.error('Error creating Excel:', error);
+     // console.error('Error creating Excel:', error);
     } finally {
       setLoading(false);
     }

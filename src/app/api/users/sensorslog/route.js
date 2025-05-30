@@ -70,19 +70,21 @@ export const POST = async (reqest) => {
     
    let status = await mongoose.connect(connectionStr)
   status = new Sensor(payload)
-
-    var Asd= await status.save()
-      console.log(Asd)
+    await status.save()
     return NextResponse.json(({ sucess: true} ), { status: 202 } )
 }
 
 
 
 export const DELETE = async (reqest) => {
-  await mongoose.connect(connectionStr)
+ var  payload = (await reqest.json()).other;
+ 
+ if (payload==="confirm") {
+   console.log(payload)
+   await mongoose.connect(connectionStr)
   await Sensor.deleteMany()
+  }
 return NextResponse.json(({ sucess: true }), { status: 202 })
 }
 
   
-//await Sensor.find({  time: {$gte: new Date("2025-04-01T09:38:00Z"), $lte: new Date("2025-05-01T09:38:00Z")} })
