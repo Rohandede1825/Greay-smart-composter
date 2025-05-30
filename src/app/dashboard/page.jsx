@@ -254,7 +254,7 @@ function page() {
 
 
             <div className="text-center">
-              Last Updates:- {new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).toLocaleString()}
+              Last Updates:- {new Date(new Date(data.time)).toLocaleString()}
             </div>
 
 
