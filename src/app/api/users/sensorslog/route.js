@@ -1,3 +1,5 @@
+
+//http://192.168.43.126:3000/api/users/sensorslog?purp=filterbydate&s=2025-05-28T09:38:00Z&e=2025-06-30T09:38:00Z
 import mongoose from "mongoose";
 import { Sensor } from "../../../../database/userSchema"
 import { Sensortest } from "../../../../database/userSchema"
@@ -23,30 +25,30 @@ else if (query === "all") {
 
 
 else if (query === "filterbydate") {
-  const  query1  = await reqest.nextUrl.searchParams.get("s");
-  const  query2  = await reqest.nextUrl.searchParams.get("e");
-console.log(query1,query2)
-//2025-05-01T09:38:00Z
-var start = new Date(query1);
-  start = new Date(start.getTime()+ 5.5 * 60 * 60 * 1000 );
+  var  query1  = await reqest.nextUrl.searchParams.get("s");
+  var  query2  = await reqest.nextUrl.searchParams.get("e");
 
-var end = new Date(query2);
-    end = new Date(end.getTime()+ 5.5 * 60 * 60 * 1000 );
-await Sensor.find({  time: {$gte: start, $lte: end  } })
-   
-.then(records => { all=records})
-  
-.catch(error => {
-     //Handle errors
-   });
+
+
+//2025-05-30T07:55:00Z
+
+ query1 = new Date(query1);
+ query2 = new Date(query2);
+ console.log(query1, "............... ", query2);
+
+
+all = await Sensor.find({ createdAt: { $gte: query1, $lte: query2 } });
+
+
   return NextResponse.json(all)
 }
 
+
+
 else if (query === "20") {
- 
 var data = await Sensor.find().sort({ _id: -1 }).limit(15);
   data = data.reverse();
- // console.log(data)
+//console.log(data)
 return NextResponse.json(data)
 }
 
@@ -60,14 +62,17 @@ export const POST = async (reqest) => {
     if (payload.tkn !=="user") {
         return NextResponse.json({ error: "Invalid data" }, { status: 400 })
     }
-    const date = new Date();
+    var  date = new Date();
     const now = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
-    payload.time = now
+
+   payload.time = date;
     
     
    let status = await mongoose.connect(connectionStr)
   status = new Sensor(payload)
-     await status.save()
+
+    var Asd= await status.save()
+      console.log(Asd)
     return NextResponse.json(({ sucess: true} ), { status: 202 } )
 }
 
@@ -80,3 +85,4 @@ return NextResponse.json(({ sucess: true }), { status: 202 })
 }
 
   
+//await Sensor.find({  time: {$gte: new Date("2025-04-01T09:38:00Z"), $lte: new Date("2025-05-01T09:38:00Z")} })

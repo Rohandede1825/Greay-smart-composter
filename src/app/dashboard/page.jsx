@@ -65,7 +65,6 @@ function page() {
   const [nstartDate, setStartDaten] = useState(new Date());
   const [nendDate, setEndDaten] = useState(new Date());
   const [my, setMy] = useState('null');
-  const tempunit = <>&#176;C</>;
 
   const router = useRouter();
 
@@ -132,9 +131,13 @@ function page() {
   ////////////////////////////////////////////////////////////////////////////////////////////
   const fetchDataAndCreateExcel = async () => {
     setLoading(true);
-    let a = new Date(nstartDate - 5.5 * 60 * 60 * 1000)
-    let b = new Date(nendDate - 5.5 * 60 * 60 * 1000)
-
+    let a = nstartDate
+    let b = nendDate
+    a = new Date(a);
+    b = new Date(b);
+    a.setHours(0,0,0,0);
+    b.setHours(23,59,59,999);
+ 
     try {
       // Example API call
       const res = await fetch(window.location.origin + '/api/users/sensorslog?purp=filterbydate&s=' + a + '&e=' + b);
@@ -215,7 +218,9 @@ function page() {
                     secondAriaLabel="Second"
                     value={nstartDate}
                     yearAriaLabel="Year"
-                    format={"dd-MM-y h:mm:s a"} />
+                    format={"dd-MM-y"
+                    //format={"dd-MM-y h:mm:s a"
+                    } />
                   &nbsp;&nbsp;
 
                 </div>
@@ -235,7 +240,7 @@ function page() {
                     secondAriaLabel="Second"
                     value={nendDate}
                     yearAriaLabel="Year"
-                    format={"dd-MM-y h:mm:s a"} />
+                    format={"dd-MM-y"} />
                   &nbsp;&nbsp;
                 </div>
 

@@ -63,7 +63,7 @@ const sensorlogModel = new mongoose.Schema({
         : {
         type: String,
     },
-});
+},{timestamps: true });
 export const Sensor = mongoose.models.sensorCollections || mongoose.model('sensorCollections', sensorlogModel);
 
 
@@ -99,6 +99,8 @@ const sensortestlogModel = new mongoose.Schema({
     other
         : {
         type: String,
-    },
-});
+    }
+}, );
+
+
 export const Sensortest = mongoose.models.sensorcollectiontests || mongoose.model('sensorcollectiontests', sensortestlogModel);
