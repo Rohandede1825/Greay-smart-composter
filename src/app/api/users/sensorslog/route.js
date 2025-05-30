@@ -74,13 +74,10 @@ export const POST = async (reqest) => {
     return NextResponse.json(({ sucess: true} ), { status: 202 } )
 }
 
-
-
 export const DELETE = async (reqest) => {
  var  payload = (await reqest.json()).other;
  
  if (payload==="confirm") {
-   console.log(payload)
    await mongoose.connect(connectionStr)
   await Sensor.deleteMany()
   }
