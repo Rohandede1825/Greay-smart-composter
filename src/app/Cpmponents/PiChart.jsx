@@ -109,7 +109,7 @@ const options = {
           props.priviousData.map((data, index) => {
             if (index < 15) {
               chartData.datasets[index] = data[props.mykey]
-              chartData.labels[index] = new Date(new Date(data.time) - 5.5 * 60 * 60 * 1000).getMinutes()
+              chartData.labels[index] = new Date(new Date(data.time)).getMinutes()
             }
           })
           setGraphData(props.priviousData[0]._id)

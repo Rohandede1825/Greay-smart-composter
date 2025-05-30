@@ -246,7 +246,7 @@ function page() {
 
 
                 <div className="col-auto col-md-auto">
-                  <button className="btn btn-secondary cfont-weight-bold" onClick={fetchDataAndCreateExcel} disabled={loading}>{loading ? 'Generating Excel...' : 'Generate Excel'}</button>
+                  <button className="btn btn-secondary cfont-weight-bold" onClick={fetchDataAndCreateExcel} disabled={loading}>{loading ? 'Generating Excel...' : 'Export Excel'}</button>
                 </div>
               </div>
             </div>
