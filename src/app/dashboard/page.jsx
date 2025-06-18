@@ -108,26 +108,57 @@ function page() {
   return (
     <>
       <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+        {/* Updated Header Section */}
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
-            <Image src={Earth} width={60} height={60} alt="" style={{ marginRight: '15px' }} />
-            <h1 style={{ color: "#73B10F", fontSize: '28px', fontWeight: 'bold', margin: 0 }}>Greya Smart Composer</h1>
+          <h1 style={{ 
+            color: "#73B10F", 
+            fontSize: '32px', 
+            fontWeight: 'bold', 
+            margin: '0 0 10px 0',
+            textTransform: 'uppercase'
+          }}>
+            Greya Smart Composer
+          </h1>
+          <p style={{ 
+            color: '#333', 
+            fontSize: '16px', 
+            marginBottom: '20px',
+            fontWeight: '500'
+          }}>
+            A Smart IoT-Enabled Device for On-Site Wet Waste Processing
+          </p>
+          
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            gap: '30px',
+            marginBottom: '20px'
+          }}>
+            <div style={{ fontSize: '14px' }}>
+              Start Date: <span style={{ fontWeight: 'bold' }}>28-05-2025</span>
+            </div>
+            <div style={{ fontSize: '14px' }}>
+              End Due
+            </div>
           </div>
-          <div>
-            <p style={{ color: '#555', fontSize: '14px', marginBottom: '20px' }}>
-              A Smart IoT-Enabled Device for On-Site Wet Waste Processing
-            </p>
-          </div>
+          
+          <div style={{ 
+            height: '1px', 
+            backgroundColor: '#ddd', 
+            margin: '20px 0',
+            width: '100%'
+          }}></div>
         </div>
 
         {/* Date Pickers and Generate Report */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
             <div style={{ fontSize: '14px' }}>
-              Start Date: <span style={{ fontWeight: 'bold' }}>28-05-2025</span>
+              Start Date: <span style={{ fontWeight: 'bold' }}>{nstartDate.toLocaleDateString('en-GB')}</span>
             </div>
             <div style={{ fontSize: '14px' }}>
-              End Date
+              End Date: <span style={{ fontWeight: 'bold' }}>{nendDate.toLocaleDateString('en-GB')}</span>
             </div>
           </div>
           <button 
@@ -147,65 +178,43 @@ function page() {
           </button>
         </div>
 
+        {/* Graph Section */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap' }}>
+          {graphselect.Humidity == "line" ? (<LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(255, 255, 255)'} unit={"%"} />)
+            : graphselect.Humidity == "bar" ? (<BarGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(255, 255, 255)'} unit={"%"} />)
+              : graphselect.Humidity == "pi" ? (<PiChart data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(255, 255, 255)'} unit={"%"} />)
+                : <>nfnfn</>}
 
+          {graphselect.Temperature == "line" ? (<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'} unit={<>&#176;C</>} />)
+            : graphselect.Temperature == "bar" ? (<BarGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'} unit={<>&#176;C</>} />)
+              : graphselect.Temperature == "pi" ? (<PiChart data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'} unit={<>&#176;C</>} />)
+                : <>nfnfn</>}
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap' }}>
+          {graphselect.Ph == "line" ? (<LineGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(255, 255, 255)'} unit={"pH"} />)
+            : graphselect.Ph == "bar" ? (<BarGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(255, 255, 255)'} unit={"pH"} />)
+              : graphselect.Ph == "pi" ? (<PiChart data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(255, 255, 255)'} unit={"pH"} />)
+                : <>nfnfn</>}
 
-              {
-                graphselect.Humidity == "line" ? (<LineGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(255, 255, 255)'} unit={"%"} />)
-                  : graphselect.Humidity == "bar" ? (<BarGraph data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(255, 255, 255)'} unit={"%"} />)
-                    : graphselect.Humidity == "pi" ? (<PiChart data={data.Humidity} time={data.time} Label={'Humidity'} priviousData={my} mykey={'Humidity'} id={rtkid} image={humidity} bg={'rgb(255, 255, 255)'} unit={"%"} />)
-                      : <>nfnfn</>
-              }
+          {graphselect.H2s == "line" ? (<LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+            : graphselect.H2s == "bar" ? (<BarGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+              : graphselect.H2s == "pi" ? (<PiChart data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+                : <>nfnfn</>}
 
+          {graphselect.Ammonia == "line" ? (<LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+            : graphselect.Ammonia == "bar" ? (<BarGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+              : graphselect.Ammonia == "pi" ? (<PiChart data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+                : <>nfnfn</>}
 
-              {
-                graphselect.Temperature == "line" ? (<LineGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'} unit={<>&#176;C</>} />)
-                  : graphselect.Temperature == "bar" ? (<BarGraph data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'} unit={<>&#176;C</>} />)
-                    : graphselect.Temperature == "pi" ? (<PiChart data={data.Temperature} time={data.time} Label={'Temperature'} priviousData={my} mykey={'Temperature'} id={rtkid} image={temperature} bg={'rgb(255, 255, 255)'} unit={<>&#176;C</>} />)
-                      : <>nfnfn</>
-              }
+          {graphselect.Methane == "line" ? (<LineGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+            : graphselect.Methane == "bar" ? (<BarGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+              : graphselect.Methane == "pi" ? (<PiChart data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+                : <>nfnfn</>}
 
-              {
-                graphselect.Ph == "line" ? (<LineGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(255, 255, 255)'} unit={"pH"} />)
-                  : graphselect.Ph == "bar" ? (<BarGraph data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(255, 255, 255)'} unit={"pH"} />)
-                    : graphselect.Ph == "pi" ? (<PiChart data={data.Ph} time={data.time} Label={'pH'} priviousData={my} mykey={'Ph'} id={rtkid} image={ph} bg={'rgb(255, 255, 255)'} unit={"pH"} />)
-                      : <>nfnfn</>
-              }
-
-
-              {
-                graphselect.H2s == "line" ? (<LineGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                  : graphselect.H2s == "bar" ? (<BarGraph data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                    : graphselect.H2s == "pi" ? (<PiChart data={data.H2s} time={data.time} Label={'H2S'} priviousData={my} mykey={'H2s'} id={rtkid} image={H2S} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                      : <>nfnfn</>
-              }
-
-              {
-
-                graphselect.Ammonia == "line" ? (<LineGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                  : graphselect.Ammonia == "bar" ? (<BarGraph data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                    : graphselect.Ammonia == "pi" ? (<PiChart data={data.Ammonia} time={data.time} Label={'Ammonia'} priviousData={my} mykey={'Ammonia'} image={NH3} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                      : <>nfnfn</>
-              }
-
-
-              {
-                graphselect.Methane == "line" ? (<LineGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                  : graphselect.Methane == "bar" ? (<BarGraph data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                    : graphselect.Methane == "pi" ? (<PiChart data={data.Methane} time={data.time} Label={'Methane'} priviousData={my} mykey={'Methane'} image={CH4} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                      : <>nfnfn</>
-              }
-
-              {
-                graphselect.Co2 == "line" ? (<LineGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                  : graphselect.Co2 == "bar" ? (<BarGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                    : graphselect.Co2 == "pi" ? (<PiChart data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
-                      : <>nfnfn</>
-              }
-
-
-            </div>
+          {graphselect.Co2 == "line" ? (<LineGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+            : graphselect.Co2 == "bar" ? (<BarGraph data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+              : graphselect.Co2 == "pi" ? (<PiChart data={data.Co2} time={data.time} Label={'CO2'} priviousData={my} mykey={'Co2'} image={CO2} bg={'rgb(255, 255, 255)'} unit={"ppm"} />)
+                : <>nfnfn</>}
+        </div>
 
         {/* Dashboard Metrics */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginBottom: '30px' }}>
@@ -269,9 +278,6 @@ function page() {
           </div>
         </div>
 
-
-        
-
         {/* Version Info */}
         <div style={{ textAlign: 'right', fontSize: '12px', color: '#888' }}>
           v0.0.36
@@ -282,5 +288,3 @@ function page() {
 }
 
 export default page;
-
-
