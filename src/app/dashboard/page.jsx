@@ -127,7 +127,7 @@ function page() {
               Start Date: <span style={{ fontWeight: 'bold' }}>28-05-2025</span>
             </div>
             <div style={{ fontSize: '14px' }}>
-              End Due
+              End Date
             </div>
           </div>
           <button 
