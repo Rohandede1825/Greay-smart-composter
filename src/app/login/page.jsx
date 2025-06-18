@@ -129,7 +129,7 @@ export default function Page() {
           style={{
             width: '100%',
             padding: '10px',
-            backgroundColor: '#green',
+            backgroundColor: '#1A5D1A',
             color: '#fff',
             fontWeight: 'bold',
             border: 'none',
