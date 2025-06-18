@@ -1,181 +1,127 @@
-
 @font-face {
-  font-family: Roboto;
-  src:url(../../../public/Font/static/Roboto-Medium.ttf);
-  weight: 400;
-  font-style: Regular
+  font-family: 'Roboto';
+  src: url('../../../public/Font/static/Roboto-Medium.ttf');
+  font-weight: 400;
+  font-style: normal;
 }
 
-
 @font-face {
-  font-family: futura;
-  src:url(../../../public/Font/Roboto-VariableFont_wdth\,wght.ttf);
-
+  font-family: 'Futura';
+  src: url('../../../public/Font/Roboto-VariableFont_wdth,wght.ttf');
 }
 
-
-.container{
-margin: 5px;
- position: relative;
-    display:'inline-block';
+.container {
+  margin: 10px;
+  position: relative;
   height: 260px;
-  border: 1px solid #000000;
- border-radius: 10px;
-
- 
+  border: 1px solid #e2e8f0; /* light gray border */
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  transition: box-shadow 0.3s ease;
 }
 
 .container:hover {
-.avg {font-size: 21px;
-   /* animation: blink 1s infinite;*/
-  }
-.sensorValue
-{
-  
-  animation: blink 1s infinite;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-
-}
-
-.btncontainer{
- 
-  position: absolute;
-    display:'inline-block';
-    top: 50px;
-    left: 5px;
-   
-}
-
-.btncontainer > button{
-  background-color: #066b14;
-width: auto;
-height: auto;
-border: none;
-width: 25px;
-height: 30px;
-
-
-
-clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
-
-box-shadow: 0 4px #024d0e, 0 6px 20px rgba(0,0,0,0.19);
-color: #fff;
-font-family: Roboto, sans-serif;
-font-size: 16px;
-cursor: pointer;
-transition: transform 0.1s, box-shadow 0.1s;
-
-&:active {
-   background-color: #369c44;
-}
-}
-
-
-
-
-
-
-.heading
-{height:  90px;
-padding: 0px; 
+.heading {
+  height: 80px;
+  padding: 0px;
 }
 
 .img {
   position: absolute;
-  box-sizing: border-box;
-  right: 0px;
-  margin-right: 3px;
-  margin-top: 3px;
+  top: 8px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
 }
 
-
-.sensorName
-{
-position: absolute;
-font-size: 25px;
-top: 0px;
-left: 50%;
-transform: translate(-50%, 0%);
-font-family: Roboto;
-color: #2f8b0b;
-}
-
-
-
-
-
-
-
-
-
-.sensorValue
-{
+.sensorName {
   position: absolute;
-  font-size: 40px;
-  color: #096d12;
-font-family: futura;
-  left: 50%;
-  transform: translate(-50%, 60%);
-  display: inline-block;
-  padding: 0px;
-  margin: 0px;
- 
-}
-
-.sensorUnit
-{
- position: absolute;
-  font-size: 24px;
-  font-weight: 800;
-  color: #08642b;
-  padding: 0px;
-  top: 55px;
-  right: 3%;
-}
-
-
-.avgtxt
-{
- position: absolute;
-  font-size: 15px;
-  font-weight: 400;
-  color:#2da733;
-  padding: 0px;
-  top: 0px;
-  left:  3px;
-}
-
-
-.avg
-{
-position: absolute;
   font-size: 20px;
-  font-weight: 500;
-  color:#08740e;
-  padding: 0px;
-  top: 15px;
-  left:  2px;
-     
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  color: #2f8b0b;
+  text-align: center;
 }
 
+.sensorValue {
+  position: absolute;
+  font-size: 38px;
+  font-family: 'Futura', sans-serif;
+  color: #096d12;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  animation: blink 1.2s infinite;
+}
 
- @keyframes blink {
-            0% {
-                opacity: 1;
-                
-            }
+.sensorUnit {
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+  color: #08642b;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+}
 
-            50% {
-            font-family: Roboto;
-               
-            }
+.avgtxt {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2da733;
+  top: 4px;
+  left: 10px;
+}
 
-            100% {
-                opacity: 1;
-            
-            }
-        }
+.avg {
+  position: absolute;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #2da733;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  top: 25px;
+  left: 10px;
+}
 
+.btncontainer {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+}
 
+.btncontainer > button {
+  background-color: #066b14;
+  width: 30px;
+  height: 30px;
+  border: none;
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+  box-shadow: 0 4px #024d0e, 0 6px 20px rgba(0, 0, 0, 0.19);
+  color: white;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
 
+.btncontainer > button:active {
+  background-color: #369c44;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}

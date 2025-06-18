@@ -37,7 +37,7 @@ font-family: Roboto;
 
 .UserInfomain
 {
-background-color: #eaf8ca;
+background-color: #ffffff;
   border: 1px solid #000000;
   padding: 0px;
 
@@ -119,14 +119,6 @@ display: block;
   margin: 0px;
   padding: 0px;
 }
-
-
-
-
-
-
-
-
 
 .sensorValue {
   position: absolute;

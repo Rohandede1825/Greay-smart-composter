@@ -147,7 +147,7 @@ function page() {
             
 
 
-            <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter</h1>
+            <h1 style={{ "color": "blue", 'textAlign': 'center' }}>Greya Smart Composter </h1>
             <h4 style={{ 'textAlign': 'center' }}>A Smart IoT-Enabled Device for On-Site Wet Waste Processing and Home Composting</h4>
           </div>
 
