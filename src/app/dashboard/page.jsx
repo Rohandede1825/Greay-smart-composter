@@ -109,7 +109,8 @@ function page() {
     <>
       <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
         {/* Updated Header Section */}
-        <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+        {/* <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+          
           <h1 style={{ 
             color: "#73B10F", 
             fontSize: '32px', 
@@ -135,12 +136,7 @@ function page() {
             gap: '30px',
             marginBottom: '20px'
           }}>
-            <div style={{ fontSize: '14px' }}>
-              Start Date: <span style={{ fontWeight: 'bold' }}>28-05-2025</span>
-            </div>
-            <div style={{ fontSize: '14px' }}>
-              End Due
-            </div>
+            
           </div>
           
           <div style={{ 
@@ -149,7 +145,28 @@ function page() {
             margin: '20px 0',
             width: '100%'
           }}></div>
-        </div>
+        </div> */}
+
+        <div style={{ width: '100%', marginBottom: '30px' }}>
+  <Image
+    src="/Image/gsc.png" // ✅ path based on your structure
+    alt="Greya Smart Composer"
+    width={1200}
+    height={300}
+    style={{
+      width: '100%',
+      height: 'auto',
+      borderRadius: '16px',
+      objectFit: 'cover',
+      display: 'block',
+    }}
+    priority
+  />
+</div>
+
+
+
+
 
         {/* Date Pickers and Generate Report */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap' }}>
@@ -163,7 +180,7 @@ function page() {
           </div>
           <button 
             style={{
-              backgroundColor: '#73B10F',
+              backgroundColor: '#1BA94C',
               color: 'white',
               border: 'none',
               padding: '8px 20px',
@@ -287,4 +304,4 @@ function page() {
   );
 }
 
-export default page;
+export default page; 
