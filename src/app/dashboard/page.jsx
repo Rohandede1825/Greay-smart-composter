@@ -25,6 +25,21 @@ import { removeUser, updateUser, addUser } from '../redux/slice';
 import Link from 'next/link'
 
 function page() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const [graphselect, SetGraphselect] = useState({ Humidity: 'line', Temperature: 'bar', Ph: 'pi', H2s: 'line', Ammonia: "line", Methane: "line", Co2: "bar" })
   const [rtkid, setRtkid] = useState(null)
   const dispatch = useDispatch();
@@ -105,6 +120,27 @@ function page() {
     }
   };
 
+
+
+
+
+
+  const [src, setSrc] = useState('/Image/home.png');
+
+  useEffect(() => {
+    const updateImage = () => {
+      if (window.innerWidth < 1024) {
+        setSrc('/Image/gsc.png'); // For mobile/tablet
+      } else {
+        setSrc('/Image/home.png'); // For laptop/desktop
+      }
+    };
+
+    updateImage(); // Initial check
+    window.addEventListener('resize', updateImage);
+    return () => window.removeEventListener('resize', updateImage);
+  }, []);
+
   return (
     <>
       <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
@@ -147,22 +183,23 @@ function page() {
           }}></div>
         </div> */}
 
-        <div style={{ width: '100%', marginBottom: '30px' }}>
-  <Image
-    src="/Image/gsc.png" // ✅ path based on your structure
-    alt="Greya Smart Composer"
-    width={1200}
-    height={300}
-    style={{
-      width: '100%',
-      height: 'auto',
-      borderRadius: '16px',
-      objectFit: 'cover',
-      display: 'block',
-    }}
-    priority
-  />
-</div>
+    <div style={{ width: '100%', marginBottom: '30px' }}>
+      <Image
+        src={src}
+        alt="Greya Smart Composer"
+        width={1200}
+        height={300}
+        style={{
+          width: '100%',
+          height: 'auto',
+          borderRadius: '16px',
+          objectFit: 'cover',
+          display: 'block',
+        }}
+        priority
+      />
+    </div>
+
 
 
 
