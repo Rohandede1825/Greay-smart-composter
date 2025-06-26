@@ -24,6 +24,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUser, updateUser, addUser } from '../redux/slice';
 import Link from 'next/link'
 
+
+
+
 function page() {
 
 
@@ -207,14 +210,28 @@ function page() {
 
         {/* Date Pickers and Generate Report */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            <div style={{ fontSize: '14px' }}>
-              Start Date: <span style={{ fontWeight: 'bold' }}>{nstartDate.toLocaleDateString('en-GB')}</span>
-            </div>
-            <div style={{ fontSize: '14px' }}>
-              End Date: <span style={{ fontWeight: 'bold' }}>{nendDate.toLocaleDateString('en-GB')}</span>
-            </div>
-          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
+  <div style={{ fontSize: '14px', display: 'flex', flexDirection: 'column' }}>
+    <label style={{ fontWeight: 'bold', marginBottom: '5px' }}>Start Date:</label>
+    <DateTimePicker
+      onChange={setStartDaten}
+      value={nstartDate}
+      format="dd/MM/yyyy hh:mm a"
+      disableClock={true}
+    />
+  </div>
+  <div style={{ fontSize: '14px', display: 'flex', flexDirection: 'column' }}>
+    <label style={{ fontWeight: 'bold', marginBottom: '5px' }}>End Date:</label>
+    <DateTimePicker
+      onChange={setEndDaten}
+      value={nendDate}
+      format="dd/MM/yyyy hh:mm a"
+      disableClock={true}
+      minDate={nstartDate}
+    />
+  </div>
+</div>
+
           <button 
             style={{
               backgroundColor: '#1BA94C',
