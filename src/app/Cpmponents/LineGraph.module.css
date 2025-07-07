@@ -13,13 +13,14 @@
 .container {
   margin: 10px;
   position: relative;
-  height: 260px;
-  border: 1px solid #e2e8f0; /* light gray border */
+  height: 340px; /* Increased from 260px */
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   padding: 10px;
   transition: box-shadow 0.3s ease;
+  margin-top: 20px;
 }
 
 .container:hover {
@@ -57,8 +58,8 @@
   font-family: 'Futura', sans-serif;
   color: #096d12;
   left: 50%;
-  top: 45%;
-  transform: translate(-50%, -50%);
+  top: 60px; /* Adjusted for space above chart */
+  transform: translateX(-50%);
   animation: blink 1.2s infinite;
 }
 
@@ -67,9 +68,9 @@
   font-size: 20px;
   font-weight: bold;
   color: #08642b;
-  top: 50%;
+  top: 90px; /* aligned with sensorValue */
   right: 12px;
-  transform: translateY(-50%);
+  transform: translateY(0%);
 }
 
 .avgtxt {
@@ -123,5 +124,22 @@
   }
   50% {
     opacity: 0.6;
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .container {
+    height: 400px; /* more height for small screens */
+  }
+
+  .sensorValue {
+    font-size: 34px;
+    top: 70px;
+  }
+
+  .sensorUnit {
+    font-size: 18px;
+    top: 72px;
   }
 }

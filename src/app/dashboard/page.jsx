@@ -25,6 +25,11 @@ import { removeUser, updateUser, addUser } from '../redux/slice';
 import Link from 'next/link'
 
 
+import PieChart from "../Cpmponents/PiChart";
+
+
+
+
 
 
 function page() {
@@ -32,6 +37,19 @@ function page() {
 
 
 
+  const [sensorValue, setSensorValue] = useState(25);
+  const [previousData, setPreviousData] = useState([]);
+  const someId = "sensor-1";
+
+  useEffect(() => {
+    // simulate fetching previous 15 values
+    const simulatedData = Array.from({ length: 15 }, (_, i) => ({
+      _id: someId,
+      temperature: 20 + i,
+      time: new Date(Date.now() - (15 - i) * 60000).toISOString(),
+    }));
+    setPreviousData(simulatedData);
+  }, []);
 
 
 
@@ -80,7 +98,7 @@ function page() {
       const response = await fetch(window.location.origin + '/api/users/sensorslog?purp=20');
       const graphData = await response.json();
       setMy(graphData);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   useEffect(() => {
@@ -96,7 +114,7 @@ function page() {
       fetch(window.location.origin + '/api/users/logoff')
         .then((response) => response.json())
         .then(() => router.push('./login'))
-        .catch((error) => {});
+        .catch((error) => { });
     } catch {
       setLoading1(false);
     }
@@ -106,8 +124,8 @@ function page() {
     setLoading(true);
     let a = new Date(nstartDate);
     let b = new Date(nendDate);
-    a.setHours(0,0,0,0);
-    b.setHours(23,59,59,999);
+    a.setHours(0, 0, 0, 0);
+    b.setHours(23, 59, 59, 999);
     try {
       const res = await fetch(window.location.origin + '/api/users/sensorslog?purp=filterbydate&s=' + a + '&e=' + b);
       const exceldata = await res.json();
@@ -133,7 +151,7 @@ function page() {
   useEffect(() => {
     const updateImage = () => {
       if (window.innerWidth < 1024) {
-        setSrc('/Image/smalll.png'); // For mobile/tablet
+        setSrc('/Image/sm.png'); // For mobile/tablet
       } else {
         setSrc('/Image/home.jpg'); // For laptop/dgiesktop
       }
@@ -186,22 +204,22 @@ function page() {
           }}></div>
         </div> */}
 
-    <div style={{ width: '100%', marginBottom: '30px' }}>
-      <Image
-        src={src}
-        alt="Greya Smart Composer"
-        width={1200}
-        height={300}
-        style={{
-          width: '100%',
-          height: 'auto',
-          borderRadius: '16px',
-          objectFit: 'cover',
-          display: 'block',
-        }}
-        priority
-      />
-    </div>
+        <div style={{ width: '100%', marginBottom: '30px' }}>
+          <Image
+            src={src}
+            alt="Greya Smart Composer"
+            width={1200}
+            height={300}
+            style={{
+              width: '100%',
+              height: 'auto',
+              borderRadius: '16px',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+            priority
+          />
+        </div>
 
 
 
@@ -211,28 +229,53 @@ function page() {
         {/* Date Pickers and Generate Report */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
-  <div style={{ fontSize: '14px', display: 'flex', flexDirection: 'column' }}>
-    <label style={{ fontWeight: 'bold', marginBottom: '5px' }}>Start Date:</label>
-    <DateTimePicker
-      onChange={setStartDaten}
-      value={nstartDate}
-      format="dd/MM/yyyy hh:mm a"
-      disableClock={true}
-    />
-  </div>
-  <div style={{ fontSize: '14px', display: 'flex', flexDirection: 'column' }}>
-    <label style={{ fontWeight: 'bold', marginBottom: '5px' }}>End Date:</label>
-    <DateTimePicker
-      onChange={setEndDaten}
-      value={nendDate}
-      format="dd/MM/yyyy hh:mm a"
-      disableClock={true}
-      minDate={nstartDate}
-    />
-  </div>
-</div>
+            <div style={{ fontSize: '14px', display: 'flex', flexDirection: 'column' }}>
+              <label style={{ fontWeight: 'bold', marginBottom: '5px' }}>Start Date:</label>
+              <DateTimePicker
+                onChange={setStartDaten}
+                value={nstartDate}
+                format="dd/MM/yyyy hh:mm a"
+                disableClock={true}
+              />
+            </div>
+            <div style={{ fontSize: '14px', display: 'flex', flexDirection: 'column' }}>
+              <label style={{ fontWeight: 'bold', marginBottom: '5px' }}>End Date:</label>
+              <DateTimePicker
+                onChange={setEndDaten}
+                value={nendDate}
+                format="dd/MM/yyyy hh:mm a"
+                disableClock={true}
+                minDate={nstartDate}
+              />
+            </div>
 
-          <button 
+
+
+            <div style={{ textAlign: 'left' }}>
+              <button
+                style={{
+                  backgroundColor: '#13A10E', // Updated to green
+                  color: '#fff',
+                  border: 'none',
+                  padding: '8px 20px',
+                  borderRadius: '6px',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.3s ease'
+                }}
+                onClick={() => {
+                  getdata();        // Refresh latest sensor values
+                  getFirstGraphdata();  // Refresh graph data if needed
+                }}
+              >
+                ⟳ Last Update
+              </button>
+            </div>
+
+          </div>
+
+          <button
             style={{
               backgroundColor: '#1BA94C',
               color: 'white',
@@ -247,7 +290,14 @@ function page() {
           >
             {loading ? 'Generating...' : 'Generate Report'}
           </button>
+
+
+
         </div>
+
+
+
+
 
         {/* Graph Section */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', flexWrap: 'wrap' }}>
@@ -353,6 +403,22 @@ function page() {
         <div style={{ textAlign: 'right', fontSize: '12px', color: '#888' }}>
           v0.0.36
         </div>
+
+        {/* <LineGraph
+          id={someId}
+          data={sensorValue}
+          time={new Date().toISOString()}
+          image={temperature}
+          bg="#e0ffe0"
+          Label="Temperature"
+          unit="°C"
+          mykey="temperature"
+          priviousData={previousData}
+        /> */}
+
+
+
+
       </div>
     </>
   );
