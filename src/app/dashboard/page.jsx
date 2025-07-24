@@ -151,7 +151,7 @@ function page() {
   useEffect(() => {
     const updateImage = () => {
       if (window.innerWidth < 1024) {
-        setSrc('/Image/.png'); // For mobile/tablet
+        setSrc('/Image/hm.jpg'); // For mobile/tablet
       } else {
         setSrc('/Image/hm.jpg'); // For laptop/dgiesktop
       }
