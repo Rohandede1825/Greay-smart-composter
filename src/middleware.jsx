@@ -1,46 +1,43 @@
 
 import { NextResponse } from 'next/server'
- 
+
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
- const path=request.nextUrl.pathname;
+  const path = request.nextUrl.pathname;
 
- var ispublicPath = path ==='/login' || path ==='/register';
- var token = request.cookies.get('token')?.value || '';
+  var ispublicPath = path === '/login' || path === '/register';
+  var token = request.cookies.get('token')?.value || '';
 
 
-//console.log(path)
- //console.log(config.matcher.some( (element) => element === path ))
-// console.log(ispublicPath+'--'+config.matcher[0]+'--'+token )
+  //console.log(path)
+  //console.log(config.matcher.some( (element) => element === path ))
+  // console.log(ispublicPath+'--'+config.matcher[0]+'--'+token )
 
-  if (path==='/'&& token )
-  { 
+  if (path === '/' && token) {
 
-  return NextResponse.redirect(new URL('/dashboard', request.nextUrl));
-  
+    return NextResponse.redirect(new URL('/dashboard', request.nextUrl));
+
   }
 
 
 
- if (ispublicPath && token )
-{ 
-  
-return NextResponse.redirect(new URL('/dashboard', request.nextUrl));
+  if (ispublicPath && token) {
 
-}
+    return NextResponse.redirect(new URL('/dashboard', request.nextUrl));
 
+  }
 
 
-if (!ispublicPath && !token  )
-    { //console.log('33..............', path)
+
+  if (!ispublicPath && !token) { //console.log('33..............', path)
     return NextResponse.redirect(new URL('/login', request.nextUrl));
-    }
+  }
 
 }
- 
+
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: [ '/login', '/new', '/register', '/dashboard',  '/', '/([a-zA-Z0-9-_]+)']
+  matcher: ['/login', '/new', '/register', '/dashboard', '/', '/([a-zA-Z0-9-_]+)']
 }
 
 
