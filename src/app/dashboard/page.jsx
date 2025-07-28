@@ -146,14 +146,14 @@ function page() {
 
 
 
-  const [src, setSrc] = useState('/Image/jj.png');
+  const [src, setSrc] = useState('/Image/homee.png');
 
   useEffect(() => {
     const updateImage = () => {
       if (window.innerWidth < 1024) {
-        setSrc('/Image/jj.png'); // For mobile/tablet
+        setSrc('/Image/homee.png'); // For mobile/tablet
       } else {
-        setSrc('/Image/jj.png'); // For laptop/dgiesktop
+        setSrc('/Image/homee.png'); // For laptop/dgiesktop
       }
     };
 
